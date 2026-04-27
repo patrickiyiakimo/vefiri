@@ -1,0 +1,327 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="bg-gray-100 min-h-screen py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
+        
+        @php
+            $cart = \App\Models\Cart::where('user_id', auth()->id())->first();
+            $cartItems = $cart ? $cart->items()->with('product')->get() : collect();
+            $total = 0;
+        @endphp
+        
+        @if($cartItems->count() > 0)
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Cart Items -->
+                <div class="lg:w-2/3">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="hidden md:grid md:grid-cols-12 gap-4 p-4 bg-gray-50 border-b border-gray-200 text-sm font-medium text-gray-700">
+                            <div class="md:col-span-6">Product</div>
+                            <div class="md:col-span-2 text-center">Price</div>
+                            <div class="md:col-span-2 text-center">Quantity</div>
+                            <div class="md:col-span-2 text-center">Total</div>
+                        </div>
+                        
+                        <div class="divide-y divide-gray-200">
+                            @foreach($cartItems as $item)
+                                @php
+                                    $product = $item->product;
+                                    $subtotal = $product->price * $item->quantity;
+                                    $total += $subtotal;
+                                @endphp
+                                <div class="p-4 cart-item" data-item-id="{{ $item->id }}">
+                                    <div class="flex flex-col md:grid md:grid-cols-12 gap-4 items-center">
+                                        <!-- Product Info -->
+                                        <div class="md:col-span-6 flex items-center space-x-4 w-full">
+                                            <div class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
+                                                @if($product->images && is_array($product->images) && count($product->images) > 0)
+                                                    <img src="{{ asset('storage/' . $product->images[0]) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                                                @else
+                                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                                    </svg>
+                                                @endif
+                                            </div>
+                                            <div class="flex-1">
+                                                <h3 class="font-semibold text-gray-900">{{ $product->name }}</h3>
+                                                <p class="text-sm text-gray-500">{{ $product->sku }}</p>
+                                                <button onclick="removeFromCart({{ $item->id }})" class="mt-2 text-sm text-red-600 hover:text-red-700 transition flex items-center">
+                                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                    </svg>
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Price -->
+                                        <div class="md:col-span-2 text-center">
+                                            <span class="text-gray-900 font-medium">₱{{ number_format($product->price, 2) }}</span>
+                                        </div>
+                                        
+                                        <!-- Quantity -->
+                                        <div class="md:col-span-2">
+                                            <div class="flex items-center justify-center space-x-2">
+                                                <button onclick="updateQuantity({{ $item->id }}, {{ $item->quantity - 1 }})" class="w-8 h-8 bg-gray-100 rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+                                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                                                    </svg>
+                                                </button>
+                                                <span class="item-quantity-{{ $item->id }} w-12 text-center font-medium">{{ $item->quantity }}</span>
+                                                <button onclick="updateQuantity({{ $item->id }}, {{ $item->quantity + 1 }})" class="w-8 h-8 bg-gray-100 rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+                                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Total -->
+                                        <div class="md:col-span-2 text-center">
+                                            <span class="item-subtotal-{{ $item->id }} text-lg font-bold text-orange-600">₱{{ number_format($subtotal, 2) }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        
+                        <!-- Continue Shopping Link -->
+                        <div class="p-4 bg-gray-50 border-t border-gray-200">
+                            <a href="{{ route('shop') }}" class="text-orange-600 hover:text-orange-700 transition flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                                Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="lg:w-1/3">
+                    <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
+                        
+                        <div class="space-y-3 border-b border-gray-200 pb-4">
+                            <div class="flex justify-between text-gray-600">
+                                <span>Subtotal</span>
+                                <span id="cart-subtotal">₱{{ number_format($total, 2) }}</span>
+                            </div>
+                            <div class="flex justify-between text-gray-600">
+                                <span>Shipping</span>
+                                <span id="cart-shipping">Calculated at checkout</span>
+                            </div>
+                            <div class="flex justify-between text-gray-600">
+                                <span>Tax</span>
+                                <span id="cart-tax">₱0.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between text-lg font-bold text-gray-900 mt-4 pb-4 border-b border-gray-200">
+                            <span>Total</span>
+                            <span id="cart-total">₱{{ number_format($total, 2) }}</span>
+                        </div>
+                        
+                        <div class="mt-6 space-y-3">
+                            <button onclick="proceedToCheckout()" class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg hover:shadow-lg transition font-semibold">
+                                Proceed to Checkout
+                            </button>
+                            
+                            <button onclick="clearCart()" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition font-medium">
+                                Clear Cart
+                            </button>
+                        </div>
+                        
+                        <!-- Payment Methods -->
+                        <div class="mt-6 pt-4 border-t border-gray-200">
+                            <p class="text-sm text-gray-500 text-center mb-3">Secure payment methods</p>
+                            <div class="flex justify-center space-x-4">
+                                <svg class="h-8 w-auto" viewBox="0 0 24 24" fill="#1a1f71">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 13c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z"/>
+                                </svg>
+                                <svg class="h-8 w-auto" viewBox="0 0 24 24" fill="#ff5f00">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 13c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z"/>
+                                </svg>
+                                <svg class="h-8 w-auto" viewBox="0 0 24 24" fill="#0066cc">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 13c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
+            <!-- Empty Cart -->
+            <div class="bg-white rounded-lg shadow-lg p-12 text-center">
+                <svg class="w-24 h-24 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
+                </svg>
+                <h2 class="text-2xl font-bold text-gray-700 mb-2">Your cart is empty</h2>
+                <p class="text-gray-500 mb-6">Looks like you haven't added any items to your cart yet.</p>
+                <a href="{{ route('shop') }}" class="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition">
+                    Start Shopping
+                </a>
+            </div>
+        @endif
+    </div>
+</div>
+
+<script>
+    function updateQuantity(itemId, newQuantity) {
+        if (newQuantity < 1) {
+            removeFromCart(itemId);
+            return;
+        }
+        
+        fetch('/cart/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({ 
+                item_id: itemId, 
+                quantity: newQuantity 
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update quantity display
+                document.querySelector(`.item-quantity-${itemId}`).innerText = newQuantity;
+                
+                // Update subtotal for this item
+                const newSubtotal = data.new_subtotal;
+                document.querySelector(`.item-subtotal-${itemId}`).innerText = formatPrice(newSubtotal);
+                
+                // Update cart totals
+                updateCartTotals();
+                
+                // Update cart count in navbar
+                if (window.updateCartCount) {
+                    window.updateCartCount(data.cart_count);
+                }
+                
+                showNotification('Cart updated successfully!', 'success');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('Error updating cart', 'error');
+        });
+    }
+    
+    function removeFromCart(itemId) {
+        if (confirm('Are you sure you want to remove this item?')) {
+            fetch('/cart/remove', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                },
+                body: JSON.stringify({ item_id: itemId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Remove the item row
+                    const itemElement = document.querySelector(`.cart-item[data-item-id="${itemId}"]`);
+                    if (itemElement) {
+                        itemElement.remove();
+                    }
+                    
+                    // Update cart totals
+                    updateCartTotals();
+                    
+                    // Update cart count in navbar
+                    if (window.updateCartCount) {
+                        window.updateCartCount(data.cart_count);
+                    }
+                    
+                    showNotification('Item removed from cart!', 'success');
+                    
+                    // Check if cart is empty
+                    const remainingItems = document.querySelectorAll('.cart-item').length;
+                    if (remainingItems === 0) {
+                        location.reload();
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Error removing item', 'error');
+            });
+        }
+    }
+    
+    function clearCart() {
+        if (confirm('Are you sure you want to clear your entire cart?')) {
+            fetch('/cart/clear', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Error clearing cart', 'error');
+            });
+        }
+    }
+    
+    function updateCartTotals() {
+        // Fetch updated cart totals from server
+        fetch('/cart/totals', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('cart-subtotal').innerText = formatPrice(data.subtotal);
+                document.getElementById('cart-total').innerText = formatPrice(data.total);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    
+    function proceedToCheckout() {
+        window.location.href = '/checkout';
+    }
+    
+    function formatPrice(price) {
+        return '₱' + parseFloat(price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }
+    
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg shadow-lg text-white transform transition-all duration-300 translate-x-full ${
+            type === 'success' ? 'bg-green-500' : 'bg-red-500'
+        }`;
+        notification.innerHTML = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.remove('translate-x-full');
+        }, 100);
+        
+        setTimeout(() => {
+            notification.classList.add('translate-x-full');
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+</script>
+@endsection
