@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom selection color - Orange instead of Blue */
+::selection {
+    background-color: #f97316;
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background-color: #f97316;
+    color: #ffffff;
+}
+
+/* For better browser compatibility */
+::-webkit-selection {
+    background-color: #f97316;
+    color: #ffffff;
+}
+
+/* Optional: Change focus ring color to orange */
+*:focus {
+    outline: none;
+    ring-color: #f97316;
+}
+
+/* Change focus ring for inputs */
+input:focus, 
+textarea:focus, 
+select:focus,
+button:focus {
+    ring-color: #f97316 !important;
+}
+
+/* Change autofill background color (optional) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* Custom scrollbar (optional - matches orange theme) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f97316;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ea580c;
+}
