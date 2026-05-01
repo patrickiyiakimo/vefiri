@@ -9,24 +9,23 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <div class="text-center max-w-3xl mx-auto">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
-                About <span class="text-orange-200">Vefiri</span>
+                Shop Our <span class="text-orange-200">Collection</span>
             </h1>
             <p class="text-xl md:text-2xl text-orange-100 mb-4 animate-fade-in-up">
-                Shop Safely with Verified Sellers Across Nigeria
-            </p>
-            <p class="text-lg text-orange-50/90 animate-fade-in-up" style="animation-delay: 0.1s">
-                Connecting trusted sellers with savvy shoppers across Nigeria for a seamless shopping experience
+                Discover amazing products from our trusted vendors
             </p>
         </div>
     </div>
     
-    <!-- Wave Divider -->
+    <!-- Wave Divider - Same as About page -->
     <div class="absolute bottom-0 left-0 right-0">
         <svg class="w-full h-12 text-white" preserveAspectRatio="none" viewBox="0 0 1440 54">
             <path fill="currentColor" d="M0 22L120 16.7C240 11 480 0 720 0C960 0 1200 11 1320 16.7L1440 22V54H0V22Z"/>
         </svg>
     </div>
 </section>
+
+
 
 <!-- Mission Section -->
 <section class="py-16 md:py-20 bg-white">
@@ -298,6 +297,36 @@
     .group:hover .w-16 {
         transform: scale(1.1);
         transition: transform 0.3s ease;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fade-in {
+        animation: fade-in 0.8s ease-out;
+    }
+    
+    .animate-fade-in-up {
+        animation: fade-in-up 1s ease-out 0.2s both;
     }
 </style>
 @endsection

@@ -120,7 +120,7 @@
                     </div>
                     
                     <!-- Title -->
-                    <h3 class="text-3xl font-bold text-white mb-4">Become a Seller Quickly</h3>
+                    <h3 class="text-3xl font-bold text-white mb-4">Become a Vendor Quickly</h3>
                     
                     <!-- Subtitle -->
                     <p class="text-xl text-green-400 font-semibold mb-3">Join Our Marketplace</p>
@@ -154,14 +154,14 @@
                             <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Dedicated seller support & analytics</span>
+                            <span>Dedicated vendor support & analytics</span>
                         </div>
                     </div>
                     
                     <!-- CTA Button -->
                     <a href="{{ route('signup') }}" 
                        class="group/btn inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
-                        Become a Seller
+                        Become a Vendor
                         <svg class="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>

@@ -34,33 +34,47 @@ class VendorController extends Controller
     }
 
     public function dashboard()
-    {
-        $user = auth()->user();
+{
+    $user = auth()->user();
+    
+    // Admin Dashboard
+    if ($user->isAdmin()) {
+        $pendingVendors = User::where('role', 'vendor')
+            ->where('vendor_status', 'pending')
+            ->paginate(10);
         
-        // Admin Dashboard
-        if ($user->isAdmin()) {
-            $pendingVendors = User::where('role', 'vendor')
-                ->where('vendor_status', 'pending')
-                ->get();
-            $totalVendors = User::where('role', 'vendor')->count();
-            $totalCustomers = User::where('role', 'customer')->count();
-            $totalProducts = Product::count();
-            $recentProducts = Product::with('vendor')->latest()->take(10)->get();
-            
-            return view('admin.dashboard', compact('pendingVendors', 'totalVendors', 'totalCustomers', 'totalProducts', 'recentProducts'));
-        }
+        $pendingLogistics = \App\Models\LogisticsPartner::where('status', 'pending')
+            ->with('user')
+            ->paginate(10);
         
-        // Vendor Dashboard
-        if ($user->isVendor()) {
-            $products = $user->products()->latest()->paginate(10);
-            $totalSales = $user->products()->sum('sales_count');
-            $totalProducts = $user->products()->count();
-            $lowStockProducts = $user->products()->where('stock_quantity', '<=', 10)->count();
-            
-            return view('vendor.dashboard', compact('products', 'totalSales', 'totalProducts', 'lowStockProducts'));
-        }
+        $totalVendors = User::where('role', 'vendor')->count();
+        $totalCustomers = User::where('role', 'customer')->count();
+        $totalProducts = Product::count();
+        $pendingVendorsCount = User::where('role', 'vendor')->where('vendor_status', 'pending')->count();
+        $pendingLogisticsCount = \App\Models\LogisticsPartner::where('status', 'pending')->count();
         
-        // Customers don't get a dashboard - redirect to shop
-        return redirect('/shop');
+        return view('admin.dashboard', compact(
+            'pendingVendors', 
+            'pendingLogistics',
+            'totalVendors', 
+            'totalCustomers', 
+            'totalProducts',
+            'pendingVendorsCount',
+            'pendingLogisticsCount'
+        ));
     }
+    
+    // Vendor Dashboard
+    if ($user->isVendor()) {
+        $products = $user->products()->latest()->paginate(10);
+        $totalSales = $user->products()->sum('sales_count');
+        $totalProducts = $user->products()->count();
+        $lowStockProducts = $user->products()->where('stock_quantity', '<=', 10)->count();
+        
+        return view('vendor.dashboard', compact('products', 'totalSales', 'totalProducts', 'lowStockProducts'));
+    }
+    
+    // Customers don't get a dashboard - redirect to shop
+    return redirect('/shop');
+}
 }

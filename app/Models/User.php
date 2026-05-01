@@ -84,4 +84,20 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Product::class, 'wishlists')->withTimestamps();
     }
+
+    // Add this relationship
+    public function logisticsPartner()
+    {
+        return $this->hasOne(LogisticsPartner::class);
+    }
+
+    public function isLogisticsPartner()
+    {
+        return $this->logisticsPartner && $this->logisticsPartner->status === 'approved';
+    }
+
+    public function hasLogisticsApplication()
+    {
+        return $this->logisticsPartner && $this->logisticsPartner->status === 'pending';
+    }
 }

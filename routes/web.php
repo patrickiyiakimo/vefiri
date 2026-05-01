@@ -29,6 +29,11 @@ Route::get('/shop', function () {
     return view('shop', compact('categories'));
 })->name('shop');
 
+// Logistics Partner Page
+Route::get('/logistics', function () {
+    return view('logistics');
+})->name('logistics');
+
 // API route for products (AJAX filtering)
 Route::get('/api/products', function (Request $request) {
     $query = Product::where('is_active', true);
@@ -430,6 +435,22 @@ Route::middleware(['auth'])->group(function () {
             'total' => $subtotal
         ]);
     });
+});
+
+// Logistics Routes
+Route::middleware(['auth'])->prefix('logistics')->group(function () {
+    Route::get('/apply', [App\Http\Controllers\LogisticsController::class, 'showApplicationForm'])->name('logistics.apply');
+    Route::post('/apply', [App\Http\Controllers\LogisticsController::class, 'submitApplication'])->name('logistics.apply.submit');
+    Route::get('/status', [App\Http\Controllers\LogisticsController::class, 'showStatus'])->name('logistics.status');
+    Route::get('/dashboard', [App\Http\Controllers\LogisticsController::class, 'dashboard'])->name('logistics.dashboard');
+});
+
+// Admin Logistics Routes
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/logistics', [App\Http\Controllers\Admin\LogisticsController::class, 'index'])->name('admin.logistics.index');
+    Route::get('/logistics/{id}', [App\Http\Controllers\Admin\LogisticsController::class, 'show'])->name('admin.logistics.show');
+    Route::post('/logistics/{id}/approve', [App\Http\Controllers\Admin\LogisticsController::class, 'approve'])->name('admin.logistics.approve');
+    Route::post('/logistics/{id}/reject', [App\Http\Controllers\Admin\LogisticsController::class, 'reject'])->name('admin.logistics.reject');
 });
 
 // ========== VENDOR ROUTES ==========

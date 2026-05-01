@@ -84,22 +84,47 @@
 
                 <!-- Desktop Navigation Links -->
                 <div class="hidden md:flex items-center space-x-1 lg:space-x-8">
-                     <a href="{{ url('/about') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
-        About
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-    </a>
-                    <a href="{{ url('/shop') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+                    <a href="{{ url('/') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="{{ route('shop') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
                         Shop
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <!-- <a href="{{ url('/partner') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
-                        Partner
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-                    </a> -->
-                    <a href="{{ url('/vendor') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
-                        Vendor
+                    <a href="{{ route('about') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+                        About
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
+                    <a href="{{ route('vendor') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+                        Vendors
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    
+                    <!-- Logistics Link - Shows differently based on user status -->
+                    @auth
+                        @if(auth()->user()->isLogisticsPartner())
+                            <a href="{{ route('logistics.dashboard') }}" class="px-3 py-2 text-orange-600 font-medium hover:text-orange-700 transition duration-300 relative group">
+                                Logistics Dashboard
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
+                            </a>
+                        @elseif(auth()->user()->hasLogisticsApplication())
+                            <a href="{{ route('logistics.status') }}" class="px-3 py-2 text-yellow-600 font-medium hover:text-yellow-700 transition duration-300 relative group">
+                                Application Status
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-500 group-hover:w-full transition-all duration-300"></span>
+                            </a>
+                        @else
+                            <a href="{{ route('logistics') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+                                Logistics
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ route('logistics') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+                            Logistics
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                    @endauth
                 </div>
 
                 <!-- Right Section: Cart & Auth -->
@@ -154,6 +179,23 @@
                                             </a>
                                         @endif
                                         
+                                        <!-- Logistics Dashboard/Status for Logistics Partners -->
+                                        @if(Auth::user()->isLogisticsPartner())
+                                            <a href="{{ route('logistics.dashboard') }}" class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition">
+                                                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
+                                                </svg>
+                                                Logistics Dashboard
+                                            </a>
+                                        @elseif(Auth::user()->hasLogisticsApplication())
+                                            <a href="{{ route('logistics.status') }}" class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition">
+                                                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                                Logistics Application Status
+                                            </a>
+                                        @endif
+                                        
                                         <a href="{{ url('/profile') }}" class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition">
                                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -172,6 +214,7 @@
                                             </svg>
                                             Wishlist
                                         </a>
+                                        
                                         <!-- Become a Vendor - Only show for customers who are not vendors -->
                                         @if(Auth::user()->isCustomer())
                                             <a href="{{ route('vendor.apply') }}" class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition">
@@ -223,29 +266,64 @@
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg fixed inset-x-0 top-16 z-40 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div class="px-4 py-3 space-y-1">
-                 <a href="{{ url('/about') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
-        About
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-    </a>
                 <!-- Mobile Nav Links -->
-                <a href="{{ url('/shop') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
+                <a href="{{ url('/') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
+                    <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Home
+                </a>
+                <a href="{{ route('shop') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
                     <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                     </svg>
                     Shop
                 </a>
-                <!-- <a href="{{ url('/partner') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
+                <a href="{{ route('about') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
                     <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    Partner
-                </a> -->
-                <a href="{{ url('/vendor') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
+                    About
+                </a>
+                <a href="{{ route('vendor') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
                     <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                     </svg>
-                    Vendor
+                    Vendors
                 </a>
+                
+                <!-- Mobile Logistics Links -->
+                @auth
+                    @if(auth()->user()->isLogisticsPartner())
+                        <a href="{{ route('logistics.dashboard') }}" class="flex items-center px-3 py-3 text-orange-600 hover:text-orange-700 hover:bg-orange-50 rounded-lg transition group">
+                            <svg class="w-5 h-5 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
+                            </svg>
+                            Logistics Dashboard
+                        </a>
+                    @elseif(auth()->user()->hasLogisticsApplication())
+                        <a href="{{ route('logistics.status') }}" class="flex items-center px-3 py-3 text-yellow-600 hover:text-yellow-700 hover:bg-yellow-50 rounded-lg transition group">
+                            <svg class="w-5 h-5 mr-3 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Application Status
+                        </a>
+                    @else
+                        <a href="{{ route('logistics') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
+                            <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
+                            </svg>
+                            Become Logistics Partner
+                        </a>
+                    @endif
+                @else
+                    <a href="{{ route('logistics') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
+                        <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
+                        </svg>
+                        Logistics
+                    </a>
+                @endauth
                 
                 <div class="border-t border-gray-100 my-2"></div>
                 
