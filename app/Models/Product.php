@@ -28,7 +28,7 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'images' => 'array',
+        'images' => 'array', // This automatically handles JSON encoding/decoding
         'attributes' => 'array',
         'price' => 'decimal:2',
         'compare_price' => 'decimal:2',
@@ -36,31 +36,51 @@ class Product extends Model
         'is_featured' => 'boolean',
     ];
 
-    // Relationship with vendor (user)
+    // Accessor to always return array
+    public function getImagesAttribute($value)
+    {
+        if (is_null($value)) {
+            return [];
+        }
+        
+        if (is_array($value)) {
+            return $value;
+        }
+        
+        $decoded = json_decode($value, true);
+        return is_array($decoded) ? $decoded : [];
+    }
+
+    // Mutator to ensure images are stored as JSON
+    public function setImagesAttribute($value)
+    {
+        if (is_array($value)) {
+            $this->attributes['images'] = json_encode($value);
+        } else {
+            $this->attributes['images'] = $value;
+        }
+    }
+
     public function vendor()
     {
         return $this->belongsTo(User::class, 'vendor_id');
     }
 
-    // Relationship with category
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // Relationship with order items
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }
 
-    // Get formatted price
     public function getFormattedPriceAttribute()
     {
         return '₱' . number_format($this->price, 2);
     }
 
-    // Get discount percentage
     public function getDiscountPercentageAttribute()
     {
         if ($this->compare_price && $this->compare_price > $this->price) {
@@ -69,21 +89,13 @@ class Product extends Model
         return 0;
     }
 
-    // Scope for active products
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
     }
 
-    // Scope for featured products
     public function scopeFeatured($query)
     {
         return $query->where('is_featured', true);
-    }
-
-    // Scope for in-stock products
-    public function scopeInStock($query)
-    {
-        return $query->where('stock_quantity', '>', 0);
     }
 }

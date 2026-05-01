@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// About page
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 // Shop page
 Route::get('/shop', function () {
     $categories = Category::where('is_active', true)->get();
@@ -78,6 +83,14 @@ Route::get('/api/products', function (Request $request) {
     
     $products = $query->with('category')->paginate(12);
     
+    // Ensure images are properly formatted
+    $productsArray = $products->items();
+    foreach ($productsArray as $product) {
+        if ($product->images) {
+            $product->images = is_array($product->images) ? $product->images : json_decode($product->images, true);
+        }
+    }
+    
     // Get category counts for sidebar
     $allCategories = Category::where('is_active', true)->get();
     $categoryCounts = [];
@@ -90,7 +103,7 @@ Route::get('/api/products', function (Request $request) {
     }
     
     return response()->json([
-        'products' => $products->items(),
+        'products' => $productsArray,
         'current_page' => $products->currentPage(),
         'last_page' => $products->lastPage(),
         'total' => $products->total(),
@@ -167,6 +180,148 @@ Route::middleware('guest')->group(function () {
     })->name('signup.post');
 });
 
+// Profile routes
+// create the get route for profile page
+Route::get('/profile', function () {
+    $user = auth()->user();
+    return view('profile', compact('user'));
+})->name('profile')->middleware('auth');
+
+Route::put('/profile', function (Illuminate\Http\Request $request) {
+    $user = auth()->user();
+    
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'phone' => 'nullable|string|max:20',
+        'address' => 'nullable|string',
+    ]);
+    
+    $user->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'phone' => $request->phone,
+        'address' => $request->address,
+    ]);
+    
+    return back()->with('success', 'Profile updated successfully!');
+})->name('profile.update');
+
+Route::put('/profile/password', function (Illuminate\Http\Request $request) {
+    $request->validate([
+        'current_password' => 'required|current_password',
+        'password' => 'required|string|min:8|confirmed',
+    ]);
+    
+    auth()->user()->update([
+        'password' => Illuminate\Support\Facades\Hash::make($request->password),
+    ]);
+    
+    return back()->with('success', 'Password updated successfully!');
+})->name('profile.password');
+
+// Vendor profile update
+Route::put('/profile/vendor', function (Illuminate\Http\Request $request) {
+    $user = auth()->user();
+    
+    if (!$user->isVendor()) {
+        return back()->with('error', 'Unauthorized access.');
+    }
+    
+    $request->validate([
+        'store_name' => 'required|string|max:255',
+        'store_description' => 'nullable|string',
+        'store_logo' => 'nullable|image|max:2048',
+        'store_banner' => 'nullable|image|max:2048',
+    ]);
+    
+    $data = [
+        'store_name' => $request->store_name,
+        'store_description' => $request->store_description,
+    ];
+    
+    if ($request->hasFile('store_logo')) {
+        $logoPath = $request->file('store_logo')->store('stores/logos', 'public');
+        $data['store_logo'] = $logoPath;
+    }
+    
+    if ($request->hasFile('store_banner')) {
+        $bannerPath = $request->file('store_banner')->store('stores/banners', 'public');
+        $data['store_banner'] = $bannerPath;
+    }
+    
+    $user->update($data);
+    
+    return back()->with('success', 'Store settings updated successfully!');
+})->name('profile.vendor.update');
+
+// Vendor listing API (public - no authentication required)
+Route::get('/api/vendors', function (Request $request) {
+    $query = App\Models\User::where('role', 'vendor')
+        ->where('vendor_status', 'approved')
+        ->where('is_active', true);
+    
+    // Search filter
+    if ($request->search) {
+        $query->where(function($q) use ($request) {
+            $q->where('store_name', 'like', '%' . $request->search . '%')
+              ->orWhere('name', 'like', '%' . $request->search . '%');
+        });
+    }
+    
+    // Sorting
+    switch ($request->sort_by) {
+        case 'name_desc':
+            $query->orderBy('store_name', 'desc');
+            break;
+        case 'newest':
+            $query->orderBy('created_at', 'desc');
+            break;
+        case 'oldest':
+            $query->orderBy('created_at', 'asc');
+            break;
+        case 'products_high':
+            $query->withCount('products')->orderBy('products_count', 'desc');
+            break;
+        case 'products_low':
+            $query->withCount('products')->orderBy('products_count', 'asc');
+            break;
+        case 'name_asc':
+        default:
+            $query->orderBy('store_name', 'asc');
+            break;
+    }
+    
+    $vendors = $query->withCount('products')->paginate(12);
+    
+    return response()->json([
+        'vendors' => $vendors->items(),
+        'current_page' => $vendors->currentPage(),
+        'last_page' => $vendors->lastPage(),
+        'total' => $vendors->total()
+    ]);
+})->name('api.vendors');
+
+// Get single vendor details with products
+Route::get('/api/vendors/{id}', function ($id) {
+    $vendor = App\Models\User::where('role', 'vendor')
+        ->where('vendor_status', 'approved')
+        ->where('is_active', true)
+        ->withCount('products')
+        ->findOrFail($id);
+    
+    $products = App\Models\Product::where('vendor_id', $id)
+        ->where('is_active', true)
+        ->where('stock_quantity', '>', 0)
+        ->take(10)
+        ->get();
+    
+    return response()->json([
+        'vendor' => $vendor,
+        'products' => $products
+    ]);
+})->name('api.vendors.show');
+
 // Logout route
 Route::post('/logout', function (Request $request) {
     Auth::logout();
@@ -175,20 +330,20 @@ Route::post('/logout', function (Request $request) {
     return redirect('/');
 })->name('logout');
 
-// ========== CART & WISHLIST ROUTES (Authenticated) ==========
+// ========== CART ROUTES (Authenticated) ==========
 Route::middleware(['auth'])->group(function () {
-    // Cart routes
+    // Add to cart
     Route::post('/cart/add', function (Request $request) {
-        $cart = Cart::firstOrCreate(['user_id' => auth()->id()]);
+        $cart = \App\Models\Cart::firstOrCreate(['user_id' => auth()->id()]);
         
-        $cartItem = CartItem::where('cart_id', $cart->id)
+        $cartItem = \App\Models\CartItem::where('cart_id', $cart->id)
             ->where('product_id', $request->product_id)
             ->first();
         
         if ($cartItem) {
             $cartItem->increment('quantity', $request->quantity ?? 1);
         } else {
-            CartItem::create([
+            \App\Models\CartItem::create([
                 'cart_id' => $cart->id,
                 'product_id' => $request->product_id,
                 'quantity' => $request->quantity ?? 1,
@@ -204,22 +359,76 @@ Route::middleware(['auth'])->group(function () {
         ]);
     });
     
-    // Wishlist routes
-    Route::post('/wishlist/add', function (Request $request) {
-        Wishlist::firstOrCreate([
-            'user_id' => auth()->id(),
-            'product_id' => $request->product_id,
+    // Update cart item quantity
+    Route::post('/cart/update', function (Request $request) {
+        $cartItem = \App\Models\CartItem::findOrFail($request->item_id);
+        
+        // Check if cart belongs to current user
+        $cart = \App\Models\Cart::where('user_id', auth()->id())->first();
+        if ($cartItem->cart_id != $cart->id) {
+            return response()->json(['success' => false], 403);
+        }
+        
+        $cartItem->update(['quantity' => $request->quantity]);
+        
+        $newSubtotal = $cartItem->product->price * $cartItem->quantity;
+        $cartCount = $cart->items()->sum('quantity');
+        session(['cart_count' => $cartCount]);
+        
+        return response()->json([
+            'success' => true,
+            'new_subtotal' => $newSubtotal,
+            'cart_count' => $cartCount
         ]);
+    });
+    
+    // Remove item from cart
+    Route::post('/cart/remove', function (Request $request) {
+        $cartItem = \App\Models\CartItem::findOrFail($request->item_id);
+        
+        $cart = \App\Models\Cart::where('user_id', auth()->id())->first();
+        if ($cartItem->cart_id != $cart->id) {
+            return response()->json(['success' => false], 403);
+        }
+        
+        $cartItem->delete();
+        
+        $cartCount = $cart->items()->sum('quantity');
+        session(['cart_count' => $cartCount]);
+        
+        return response()->json([
+            'success' => true,
+            'cart_count' => $cartCount
+        ]);
+    });
+    
+    // Clear entire cart
+    Route::post('/cart/clear', function (Request $request) {
+        $cart = \App\Models\Cart::where('user_id', auth()->id())->first();
+        if ($cart) {
+            $cart->items()->delete();
+            session(['cart_count' => 0]);
+        }
         
         return response()->json(['success' => true]);
     });
     
-    Route::delete('/wishlist/remove', function (Request $request) {
-        Wishlist::where('user_id', auth()->id())
-            ->where('product_id', $request->product_id)
-            ->delete();
+    // Get cart totals
+    Route::get('/cart/totals', function (Request $request) {
+        $cart = \App\Models\Cart::where('user_id', auth()->id())->first();
+        $subtotal = 0;
         
-        return response()->json(['success' => true]);
+        if ($cart) {
+            foreach ($cart->items as $item) {
+                $subtotal += $item->product->price * $item->quantity;
+            }
+        }
+        
+        return response()->json([
+            'success' => true,
+            'subtotal' => $subtotal,
+            'total' => $subtotal
+        ]);
     });
 });
 

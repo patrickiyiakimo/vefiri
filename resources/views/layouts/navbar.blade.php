@@ -84,14 +84,18 @@
 
                 <!-- Desktop Navigation Links -->
                 <div class="hidden md:flex items-center space-x-1 lg:space-x-8">
+                     <a href="{{ url('/about') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+        About
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
+    </a>
                     <a href="{{ url('/shop') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
                         Shop
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a href="{{ url('/partner') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+                    <!-- <a href="{{ url('/partner') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
                         Partner
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-                    </a>
+                    </a> -->
                     <a href="{{ url('/vendor') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
                         Vendor
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
@@ -219,6 +223,10 @@
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg fixed inset-x-0 top-16 z-40 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div class="px-4 py-3 space-y-1">
+                 <a href="{{ url('/about') }}" class="px-3 py-2 text-gray-700 font-medium hover:text-orange-500 transition duration-300 relative group">
+        About
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
+    </a>
                 <!-- Mobile Nav Links -->
                 <a href="{{ url('/shop') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
                     <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -226,12 +234,12 @@
                     </svg>
                     Shop
                 </a>
-                <a href="{{ url('/partner') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
+                <!-- <a href="{{ url('/partner') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
                     <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                     Partner
-                </a>
+                </a> -->
                 <a href="{{ url('/vendor') }}" class="flex items-center px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition group">
                     <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>

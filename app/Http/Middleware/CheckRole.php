@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string  ...$roles
+     * @return mixed
+     */
     public function handle(Request $request, Closure $next, ...$roles)
     {
         if (!Auth::check()) {
@@ -22,6 +30,6 @@ class CheckRole
             }
         }
 
-        abort(403, 'Unauthorized access.');
+        abort(403, 'Unauthorized access. You do not have permission to view this page.');
     }
 }
