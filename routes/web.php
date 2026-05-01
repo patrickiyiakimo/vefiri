@@ -437,6 +437,111 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+// Checkout Routes (Authenticated)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/checkout', function () {
+        $cart = \App\Models\Cart::where('user_id', auth()->id())->first();
+        $cartItems = $cart ? $cart->items()->with('product')->get() : collect();
+        
+        if ($cartItems->count() === 0) {
+            return redirect('/cart')->with('error', 'Your cart is empty.');
+        }
+        
+        return view('checkout');
+    })->name('checkout');
+    
+    Route::post('/checkout/process', function (Illuminate\Http\Request $request) {
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:100',
+            'zip_code' => 'required|string|max:20',
+            'payment_method' => 'required|in:card,bank_transfer,cash_on_delivery',
+        ]);
+        
+        $cart = \App\Models\Cart::where('user_id', auth()->id())->first();
+        $cartItems = $cart ? $cart->items()->with('product')->get() : collect();
+        
+        if ($cartItems->count() === 0) {
+            return redirect('/cart')->with('error', 'Your cart is empty.');
+        }
+        
+        // Calculate totals
+        $subtotal = 0;
+        foreach ($cartItems as $item) {
+            $subtotal += $item->product->price * $item->quantity;
+        }
+        $shipping = $subtotal > 50000 ? 0 : 3000;
+        $tax = $subtotal * 0.075;
+        $total = $subtotal + $shipping + $tax;
+        
+        // Generate order number
+        $orderNumber = 'ORD-' . strtoupper(uniqid());
+        
+        // Create order
+        $order = \App\Models\Order::create([
+            'user_id' => auth()->id(),
+            'order_number' => $orderNumber,
+            'status' => 'pending',
+            'payment_status' => $request->payment_method === 'cash_on_delivery' ? 'pending' : 'pending',
+            'subtotal' => $subtotal,
+            'shipping_cost' => $shipping,
+            'tax' => $tax,
+            'total' => $total,
+            'shipping_address' => $request->address . ', ' . $request->city . ', ' . $request->state . ' ' . $request->zip_code,
+            'payment_method' => $request->payment_method,
+            'notes' => $request->notes,
+        ]);
+        
+        // Create order items
+        foreach ($cartItems as $item) {
+            \App\Models\OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => $item->product_id,
+                'vendor_id' => $item->product->vendor_id,
+                'quantity' => $item->quantity,
+                'price' => $item->product->price,
+                'total' => $item->product->price * $item->quantity,
+            ]);
+            
+            // Update product sales count
+            $item->product->increment('sales_count', $item->quantity);
+            $item->product->decrement('stock_quantity', $item->quantity);
+        }
+        
+        // Clear cart
+        $cart->items()->delete();
+        session(['cart_count' => 0]);
+        
+        // Redirect based on payment method
+        if ($request->payment_method === 'bank_transfer') {
+            return redirect()->route('order.payment', $order)->with('success', 'Order placed! Please complete bank transfer.');
+        }
+        
+        return redirect()->route('order.confirmation', $order)->with('success', 'Order placed successfully!');
+    })->name('checkout.process');
+    
+    // Order confirmation page
+    Route::get('/order/confirmation/{order}', function (\App\Models\Order $order) {
+        if ($order->user_id !== auth()->id()) {
+            abort(403);
+        }
+        return view('order-confirmation', compact('order'));
+    })->name('order.confirmation');
+    
+    // Order payment page (for bank transfer)
+    Route::get('/order/payment/{order}', function (\App\Models\Order $order) {
+        if ($order->user_id !== auth()->id()) {
+            abort(403);
+        }
+        return view('order-payment', compact('order'));
+    })->name('order.payment');
+});
+
 // Logistics Routes
 Route::middleware(['auth'])->prefix('logistics')->group(function () {
     Route::get('/apply', [App\Http\Controllers\LogisticsController::class, 'showApplicationForm'])->name('logistics.apply');
