@@ -70,7 +70,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="price" class="block text-sm font-medium text-gray-700 mb-2">
-                            Price (₱) *
+                            Price (₦) *
                         </label>
                         <input type="number" step="0.01" name="price" id="price" value="{{ old('price') }}" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('price') border-red-500 @enderror"

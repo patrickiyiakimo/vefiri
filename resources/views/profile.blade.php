@@ -234,7 +234,7 @@
                                     
                                     <div class="flex justify-between items-end">
                                         <div>
-                                            <p class="text-lg font-bold text-orange-600">₱{{ number_format($order->total, 2) }}</p>
+                                            <p class="text-lg font-bold text-orange-600">₦{{ number_format($order->total, 2) }}</p>
                                             <p class="text-sm text-gray-500">{{ $order->items->count() }} item(s)</p>
                                         </div>
                                         <button onclick="viewOrder({{ $order->id }})" class="text-orange-600 hover:text-orange-700 transition text-sm font-medium">
@@ -287,7 +287,7 @@
                                             <div>
                                                 <h3 class="font-semibold text-gray-900">{{ $item->product->name }}</h3>
                                                 <p class="text-sm text-gray-500">{{ $item->product->sku }}</p>
-                                                <p class="text-lg font-bold text-orange-600 mt-1">₱{{ number_format($item->product->price, 2) }}</p>
+                                                <p class="text-lg font-bold text-orange-600 mt-1">₦{{ number_format($item->product->price, 2) }}</p>
                                             </div>
                                         </div>
                                         <div class="flex space-x-2">

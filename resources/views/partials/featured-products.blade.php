@@ -31,8 +31,8 @@
                     <p class="text-gray-500 text-sm mb-3">High-performance generator for home and outdoor use</p>
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="text-2xl font-bold text-orange-600">₱18,750.00</span>
-                            <span class="text-sm text-gray-400 line-through ml-2">₱25,000.00</span>
+                            <span class="text-2xl font-bold text-orange-600">₦18,750.00</span>
+                            <span class="text-sm text-gray-400 line-through ml-2">₦25,000.00</span>
                         </div>
                         <button onclick="addToCart(1)" 
                             class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
@@ -59,8 +59,8 @@
                     <p class="text-gray-500 text-sm mb-3">Comfortable 100% cotton shirt, available in multiple colors</p>
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="text-2xl font-bold text-orange-600">₱599.00</span>
-                            <span class="text-sm text-gray-400 line-through ml-2">₱899.00</span>
+                            <span class="text-2xl font-bold text-orange-600">₦599.00</span>
+                            <span class="text-sm text-gray-400 line-through ml-2">₦899.00</span>
                         </div>
                         <button onclick="addToCart(2)" 
                             class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
@@ -90,8 +90,8 @@
                     <p class="text-gray-500 text-sm mb-3">Energy-saving fan with remote control and 3 speed settings</p>
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="text-2xl font-bold text-orange-600">₱2,549.00</span>
-                            <span class="text-sm text-gray-400 line-through ml-2">₱2,999.00</span>
+                            <span class="text-2xl font-bold text-orange-600">₦2,549.00</span>
+                            <span class="text-sm text-gray-400 line-through ml-2">₦2,999.00</span>
                         </div>
                         <button onclick="addToCart(3)" 
                             class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
@@ -118,7 +118,7 @@
                     <p class="text-gray-500 text-sm mb-3">Genuine leather jacket, perfect for any occasion</p>
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="text-2xl font-bold text-orange-600">₱3,999.00</span>
+                            <span class="text-2xl font-bold text-orange-600">₦3,999.00</span>
                         </div>
                         <button onclick="addToCart(4)" 
                             class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
@@ -148,8 +148,8 @@
                     <p class="text-gray-500 text-sm mb-3">Noise-cancelling Bluetooth headphones with 30hr battery</p>
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="text-2xl font-bold text-orange-600">₱2,099.00</span>
-                            <span class="text-sm text-gray-400 line-through ml-2">₱2,999.00</span>
+                            <span class="text-2xl font-bold text-orange-600">₦2,099.00</span>
+                            <span class="text-sm text-gray-400 line-through ml-2">₦2,999.00</span>
                         </div>
                         <button onclick="addToCart(5)" 
                             class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
@@ -176,8 +176,8 @@
                     <p class="text-gray-500 text-sm mb-3">Track your fitness, heart rate, and notifications</p>
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="text-2xl font-bold text-orange-600">₱3,499.00</span>
-                            <span class="text-sm text-gray-400 line-through ml-2">₱4,999.00</span>
+                            <span class="text-2xl font-bold text-orange-600">₦3,499.00</span>
+                            <span class="text-sm text-gray-400 line-through ml-2">₦4,999.00</span>
                         </div>
                         <button onclick="addToCart(6)" 
                             class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
@@ -207,8 +207,8 @@
                     <p class="text-gray-500 text-sm mb-3">Brew perfect coffee with programmable timer</p>
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="text-2xl font-bold text-orange-600">₱3,199.00</span>
-                            <span class="text-sm text-gray-400 line-through ml-2">₱3,999.00</span>
+                            <span class="text-2xl font-bold text-orange-600">₦3,199.00</span>
+                            <span class="text-sm text-gray-400 line-through ml-2">₦3,999.00</span>
                         </div>
                         <button onclick="addToCart(7)" 
                             class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
@@ -235,8 +235,8 @@
                     <p class="text-gray-500 text-sm mb-3">Water-resistant backpack with USB charging port</p>
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="text-2xl font-bold text-orange-600">₱1,299.00</span>
-                            <span class="text-sm text-gray-400 line-through ml-2">₱1,999.00</span>
+                            <span class="text-2xl font-bold text-orange-600">₦1,299.00</span>
+                            <span class="text-sm text-gray-400 line-through ml-2">₦1,999.00</span>
                         </div>
                         <button onclick="addToCart(8)" 
                             class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">

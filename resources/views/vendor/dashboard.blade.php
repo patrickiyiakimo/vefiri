@@ -86,7 +86,7 @@
                             <div class="flex-1">
                                 <h3 class="text-lg font-medium text-gray-900">{{ $product->name }}</h3>
                                 <p class="text-sm text-gray-500">SKU: {{ $product->sku }} | Stock: {{ $product->stock_quantity }} units</p>
-                                <p class="text-sm text-gray-500">Price: ₱{{ number_format($product->price, 2) }}</p>
+                                <p class="text-sm text-gray-500">Price: ₦{{ number_format($product->price, 2) }}</p>
                                 <p class="text-sm text-gray-500">Sales: {{ $product->sales_count }} units sold</p>
                             </div>
                             <div class="flex space-x-3">

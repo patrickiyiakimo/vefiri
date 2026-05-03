@@ -230,7 +230,7 @@
                                     <p class="text-sm text-gray-500">Qty: {{ $item->quantity }}</p>
                                 </div>
                                 <div class="text-right">
-                                    <span class="font-semibold text-gray-900">₱{{ number_format($item->product->price * $item->quantity, 2) }}</span>
+                                    <span class="font-semibold text-gray-900">₦{{ number_format($item->product->price * $item->quantity, 2) }}</span>
                                 </div>
                             </div>
                             @endforeach
@@ -240,20 +240,20 @@
                         <div class="space-y-3 border-t border-gray-200 pt-4">
                             <div class="flex justify-between text-gray-600">
                                 <span>Subtotal</span>
-                                <span>₱{{ number_format($subtotal, 2) }}</span>
+                                <span>₦{{ number_format($subtotal, 2) }}</span>
                             </div>
                             <div class="flex justify-between text-gray-600">
                                 <span>Shipping</span>
-                                <span>@if($shipping == 0) <span class="text-green-600">Free</span> @else ₱{{ number_format($shipping, 2) }} @endif</span>
+                                <span>@if($shipping == 0) <span class="text-green-600">Free</span> @else ₦{{ number_format($shipping, 2) }} @endif</span>
                             </div>
                             <div class="flex justify-between text-gray-600">
                                 <span>Tax (7.5% VAT)</span>
-                                <span>₱{{ number_format($tax, 2) }}</span>
+                                <span>₦{{ number_format($tax, 2) }}</span>
                             </div>
                             <div class="border-t border-gray-200 pt-3 mt-3">
                                 <div class="flex justify-between text-lg font-bold text-gray-900">
                                     <span>Total</span>
-                                    <span class="text-orange-600">₱{{ number_format($total, 2) }}</span>
+                                    <span class="text-orange-600">₦{{ number_format($total, 2) }}</span>
                                 </div>
                             </div>
                         </div>

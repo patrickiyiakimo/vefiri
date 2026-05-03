@@ -74,23 +74,23 @@
                             </label>
                             <label class="flex items-center cursor-pointer">
                                 <input type="radio" name="price_range" value="0-500" class="price-filter h-4 w-4 text-orange-600 focus:ring-orange-500">
-                                <span class="ml-3 text-sm text-gray-700">Under ₱500</span>
+                                <span class="ml-3 text-sm text-gray-700">Under ₦500</span>
                             </label>
                             <label class="flex items-center cursor-pointer">
                                 <input type="radio" name="price_range" value="500-1000" class="price-filter h-4 w-4 text-orange-600 focus:ring-orange-500">
-                                <span class="ml-3 text-sm text-gray-700">₱500 - ₱1,000</span>
+                                <span class="ml-3 text-sm text-gray-700">₦500 - ₦1,000</span>
                             </label>
                             <label class="flex items-center cursor-pointer">
                                 <input type="radio" name="price_range" value="1000-2000" class="price-filter h-4 w-4 text-orange-600 focus:ring-orange-500">
-                                <span class="ml-3 text-sm text-gray-700">₱1,000 - ₱2,000</span>
+                                <span class="ml-3 text-sm text-gray-700">₦1,000 - ₦2,000</span>
                             </label>
                             <label class="flex items-center cursor-pointer">
                                 <input type="radio" name="price_range" value="2000-5000" class="price-filter h-4 w-4 text-orange-600 focus:ring-orange-500">
-                                <span class="ml-3 text-sm text-gray-700">₱2,000 - ₱5,000</span>
+                                <span class="ml-3 text-sm text-gray-700">₦2,000 - ₦5,000</span>
                             </label>
                             <label class="flex items-center cursor-pointer">
                                 <input type="radio" name="price_range" value="5000+" class="price-filter h-4 w-4 text-orange-600 focus:ring-orange-500">
-                                <span class="ml-3 text-sm text-gray-700">₱5,000+</span>
+                                <span class="ml-3 text-sm text-gray-700">₦5,000+</span>
                             </label>
                         </div>
                     </div>
@@ -343,9 +343,9 @@
                             <p class="text-gray-600 text-sm mb-2 line-clamp-2">${escapeHtml(product.description ? product.description.substring(0, 100) : '')}</p>
                             <div class="flex items-center justify-between mb-3">
                                 <div>
-                                    <span class="text-2xl font-bold text-orange-600">₱${parseFloat(product.price).toFixed(2)}</span>
+                                    <span class="text-2xl font-bold text-orange-600">₦${parseFloat(product.price).toFixed(2)}</span>
                                     ${product.compare_price ? `
-                                        <span class="text-sm text-gray-500 line-through ml-2">₱${parseFloat(product.compare_price).toFixed(2)}</span>
+                                        <span class="text-sm text-gray-500 line-through ml-2">₦${parseFloat(product.compare_price).toFixed(2)}</span>
                                     ` : ''}
                                 </div>
                             </div>
@@ -383,9 +383,9 @@
                                 <p class="text-gray-600 mb-3">${escapeHtml(product.description ? product.description.substring(0, 150) : '')}</p>
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <span class="text-2xl font-bold text-orange-600">₱${parseFloat(product.price).toFixed(2)}</span>
+                                        <span class="text-2xl font-bold text-orange-600">₦${parseFloat(product.price).toFixed(2)}</span>
                                         ${product.compare_price ? `
-                                            <span class="text-sm text-gray-500 line-through ml-2">₱${parseFloat(product.compare_price).toFixed(2)}</span>
+                                            <span class="text-sm text-gray-500 line-through ml-2">₦${parseFloat(product.compare_price).toFixed(2)}</span>
                                         ` : ''}
                                     </div>
                                     <div class="text-sm ${product.stock_quantity > 0 ? 'text-green-600' : 'text-red-600'}">

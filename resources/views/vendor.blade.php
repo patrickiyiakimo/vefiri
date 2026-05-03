@@ -331,7 +331,7 @@
                                         <h4 class="font-semibold text-gray-900">${escapeHtml(product.name)}</h4>
                                         <p class="text-sm text-gray-600 mt-1 line-clamp-2">${escapeHtml(product.description.substring(0, 80))}</p>
                                         <div class="flex items-center justify-between mt-2">
-                                            <span class="text-lg font-bold text-orange-600">₱${parseFloat(product.price).toFixed(2)}</span>
+                                            <span class="text-lg font-bold text-orange-600">₦${parseFloat(product.price).toFixed(2)}</span>
                                             <button onclick="addToCart(${product.id})" class="text-sm bg-orange-500 text-white px-3 py-1 rounded-lg hover:bg-orange-600 transition">
                                                 Add to Cart
                                             </button>

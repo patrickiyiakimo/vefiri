@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-500">Total Amount</p>
-                        <p class="font-semibold text-orange-600">₱{{ number_format($order->total, 2) }}</p>
+                        <p class="font-semibold text-orange-600">₦{{ number_format($order->total, 2) }}</p>
                     </div>
                 </div>
             </div>

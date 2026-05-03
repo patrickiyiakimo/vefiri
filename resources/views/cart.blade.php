@@ -57,7 +57,7 @@
                                         
                                         <!-- Price -->
                                         <div class="md:col-span-2 text-center">
-                                            <span class="text-gray-900 font-medium">₱{{ number_format($product->price, 2) }}</span>
+                                            <span class="text-gray-900 font-medium">₦{{ number_format($product->price, 2) }}</span>
                                         </div>
                                         
                                         <!-- Quantity -->
@@ -79,7 +79,7 @@
                                         
                                         <!-- Total -->
                                         <div class="md:col-span-2 text-center">
-                                            <span class="item-subtotal-{{ $item->id }} text-lg font-bold text-orange-600">₱{{ number_format($subtotal, 2) }}</span>
+                                            <span class="item-subtotal-{{ $item->id }} text-lg font-bold text-orange-600">₦{{ number_format($subtotal, 2) }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                         <div class="space-y-3 border-b border-gray-200 pb-4">
                             <div class="flex justify-between text-gray-600">
                                 <span>Subtotal</span>
-                                <span id="cart-subtotal">₱{{ number_format($total, 2) }}</span>
+                                <span id="cart-subtotal">₦{{ number_format($total, 2) }}</span>
                             </div>
                             <div class="flex justify-between text-gray-600">
                                 <span>Shipping</span>
@@ -114,13 +114,13 @@
                             </div>
                             <div class="flex justify-between text-gray-600">
                                 <span>Tax</span>
-                                <span id="cart-tax">₱0.00</span>
+                                <span id="cart-tax">₦0.00</span>
                             </div>
                         </div>
                         
                         <div class="flex justify-between text-lg font-bold text-gray-900 mt-4 pb-4 border-b border-gray-200">
                             <span>Total</span>
-                            <span id="cart-total">₱{{ number_format($total, 2) }}</span>
+                            <span id="cart-total">₦{{ number_format($total, 2) }}</span>
                         </div>
                         
                         <div class="mt-6 space-y-3">
@@ -303,7 +303,7 @@
     }
     
     function formatPrice(price) {
-        return '₱' + parseFloat(price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        return '₦' + parseFloat(price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     }
     
     function showNotification(message, type) {

@@ -74,7 +74,9 @@
                 <div class="flex-shrink-0">
                     <a href="{{ url('/') }}" class="flex items-center space-x-2 group">
                         <div class="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all">
-                            <span class="text-white font-bold text-xl">V</span>
+                            <span class="text-white font-bold text-xl">
+                                <img src="{{ asset('/images/PHOTO-2026-03-18-03-30-30.jpg') }}" alt="Vefiri Logo" class="w-6 h-6">
+                            </span>
                         </div>
                         <span class="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                             Vefiri
