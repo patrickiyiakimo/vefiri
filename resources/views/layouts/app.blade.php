@@ -74,5 +74,7 @@
     </main>
 
     @include('layouts.footer')
+
+     @include('partials.cookie-banner')
 </body>
 </html>

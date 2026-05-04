@@ -75,7 +75,7 @@
             <!-- Product 3: Standing Fan -->
             <div class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                 <div class="relative overflow-hidden h-64 bg-gradient-to-br from-gray-100 to-gray-300">
-                    <img src="https://images.unsplash.com/photo-1600522256909-456c1473514a?w=400&h=400&fit=crop" 
+                    <img src=https://images.pexels.com/photos/[NEW_PHOTO_ID]/pexels-photo-[NEW_PHOTO_ID].jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop
                          alt="Standing Fan" 
                          class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10 animate-pulse">
