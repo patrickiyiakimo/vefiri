@@ -28,7 +28,7 @@
                         Product Name *
                     </label>
                     <input type="text" name="name" id="name" value="{{ old('name', $product->name) }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('name') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('name') border-red-500 @enderror"
                         placeholder="Enter product name">
                     @error('name')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -41,7 +41,7 @@
                         Category *
                     </label>
                     <select name="category_id" id="category_id" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('category_id') border-red-500 @enderror">
+                        class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('category_id') border-red-500 @enderror">
                         <option value="">Select a category</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
@@ -60,7 +60,7 @@
                         Description *
                     </label>
                     <textarea name="description" id="description" rows="6" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('description') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('description') border-red-500 @enderror"
                         placeholder="Describe your product in detail...">{{ old('description', $product->description) }}</textarea>
                     @error('description')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -74,7 +74,7 @@
                             Price (₦) *
                         </label>
                         <input type="number" step="0.01" name="price" id="price" value="{{ old('price', $product->price) }}" required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('price') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('price') border-red-500 @enderror"
                             placeholder="0.00">
                         @error('price')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -102,7 +102,7 @@
                             Stock Quantity *
                         </label>
                         <input type="number" name="stock_quantity" id="stock_quantity" value="{{ old('stock_quantity', $product->stock_quantity) }}" required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('stock_quantity') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('stock_quantity') border-red-500 @enderror"
                             placeholder="0">
                         @error('stock_quantity')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -114,7 +114,7 @@
                             SKU (Stock Keeping Unit) *
                         </label>
                         <input type="text" name="sku" id="sku" value="{{ old('sku', $product->sku) }}" required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('sku') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('sku') border-red-500 @enderror"
                             placeholder="Unique product code">
                         @error('sku')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

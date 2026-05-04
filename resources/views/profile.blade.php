@@ -92,7 +92,7 @@
                                         Full Name *
                                     </label>
                                     <input type="text" name="name" id="name" value="{{ old('name', Auth::user()->name) }}" 
-                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('name') border-red-500 @enderror"
+                                        class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('name') border-red-500 @enderror"
                                         required>
                                     @error('name')
                                         <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -104,7 +104,7 @@
                                         Email Address *
                                     </label>
                                     <input type="email" name="email" id="email" value="{{ old('email', Auth::user()->email) }}" 
-                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('email') border-red-500 @enderror"
+                                        class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('email') border-red-500 @enderror"
                                         required>
                                     @error('email')
                                         <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -164,7 +164,7 @@
                                         Current Password *
                                     </label>
                                     <input type="password" name="current_password" id="current_password" 
-                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('current_password') border-red-500 @enderror"
+                                        class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('current_password') border-red-500 @enderror"
                                         required>
                                     @error('current_password')
                                         <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -176,7 +176,7 @@
                                         New Password *
                                     </label>
                                     <input type="password" name="password" id="password" 
-                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('password') border-red-500 @enderror"
+                                        class="w-full px-4 py-2 border  rounded-lg focus:ring-orange-500 focus:border-orange-500 @error('password') border-red-500 @enderror"
                                         required>
                                     @error('password')
                                         <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
