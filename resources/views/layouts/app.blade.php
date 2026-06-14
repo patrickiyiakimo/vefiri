@@ -69,9 +69,7 @@
 <body class="font-sans antialiased">
     @include('layouts.navbar')
     
-    <main>
-        @yield('content')
-    </main>
+   
 
     @include('layouts.footer')
 
