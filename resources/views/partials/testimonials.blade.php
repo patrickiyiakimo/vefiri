@@ -3,12 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="text-center mb-16">
-            <div class="inline-flex items-center px-4 py-2 bg-orange-100 rounded-full mb-6">
-                <svg class="w-4 h-4 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-orange-600 text-sm font-semibold">Testimonials</span>
-            </div>
+           
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                 What Our <span class="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Community Says</span>
             </h2>

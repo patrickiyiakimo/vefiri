@@ -146,8 +146,8 @@
                 <form class="mb-6">
                     <div class="flex">
                         <input type="email" placeholder="Your email address" 
-                               class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-orange-500 text-white text-sm">
-                        <button type="submit" class="px-4 py-2 bg-orange-500 text-white rounded-r-lg hover:bg-orange-600 transition">
+                               class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700  focus:outline-none focus:border-orange-500 text-white text-sm">
+                        <button type="submit" class="px-4 py-2 bg-orange-500 text-white  hover:bg-orange-600 transition">
                             Subscribe
                         </button>
                     </div>
@@ -178,31 +178,7 @@
             </div>
         </div>
         
-        <!-- Payment Methods -->
-        <div class="border-t border-gray-800 mt-12 pt-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="flex items-center space-x-4">
-                    <span class="text-sm text-gray-400">Secure payments by:</span>
-                    <div class="flex space-x-3">
-                        <svg class="w-10 h-6 bg-gray-800 rounded px-1" viewBox="0 0 24 16" fill="white">
-                            <path d="M14.5,0h-13C1.2,0,0,1.2,0,2.5v11C0,14.8,1.2,16,2.5,16h13c1.3,0,2.5-1.2,2.5-2.5v-11C17,1.2,15.8,0,14.5,0z M7.5,11.5c-2.2,0-4-1.8-4-4s1.8-4,4-4c1.1,0,2.1,0.5,2.9,1.2l-1.2,1.2c-0.5-0.4-1.1-0.6-1.7-0.6c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5c0.6,0,1.2-0.2,1.7-0.6l1.2,1.2C9.6,11.1,8.6,11.5,7.5,11.5z M14.5,11.5h-1V7.5h1V11.5z"/>
-                        </svg>
-                        <svg class="w-10 h-6 bg-gray-800 rounded px-1" viewBox="0 0 24 16" fill="white">
-                            <path d="M22.5,0h-21C1.2,0,0,1.2,0,2.5v11C0,14.8,1.2,16,2.5,16h21c1.3,0,2.5-1.2,2.5-2.5v-11C25,1.2,23.8,0,22.5,0z M12.5,11.5c-2.2,0-4-1.8-4-4s1.8-4,4-4c1.1,0,2.1,0.5,2.9,1.2l-1.2,1.2c-0.5-0.4-1.1-0.6-1.7-0.6c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5c0.6,0,1.2-0.2,1.7-0.6l1.2,1.2C14.6,11.1,13.6,11.5,12.5,11.5z M19.5,11.5h-1V7.5h1V11.5z"/>
-                        </svg>
-                        <svg class="w-10 h-6 bg-gray-800 rounded px-1" viewBox="0 0 24 16" fill="white">
-                            <path d="M14.5,0h-13C1.2,0,0,1.2,0,2.5v11C0,14.8,1.2,16,2.5,16h13c1.3,0,2.5-1.2,2.5-2.5v-11C17,1.2,15.8,0,14.5,0z M7.5,11.5c-2.2,0-4-1.8-4-4s1.8-4,4-4c1.1,0,2.1,0.5,2.9,1.2l-1.2,1.2c-0.5-0.4-1.1-0.6-1.7-0.6c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5c0.6,0,1.2-0.2,1.7-0.6l1.2,1.2C9.6,11.1,8.6,11.5,7.5,11.5z M14.5,11.5h-1V7.5h1V11.5z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-2 text-sm text-gray-400">
-                    <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                    </svg>
-                    <span>100% Secure Checkout</span>
-                </div>
-            </div>
-        </div>
+       
         
         <!-- Copyright -->
         <div class="border-t border-gray-800 mt-8 pt-8 text-center">

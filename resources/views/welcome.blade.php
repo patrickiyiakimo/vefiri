@@ -5,4 +5,5 @@
     @include('partials.featured-products')
     @include('partials.testimonials')
     @include('partials.cta-section')
+    @include('promotion-banner')
 @endsection
