@@ -259,7 +259,7 @@
                         </div>
                         
                         <!-- Place Order Button -->
-                        <button type="submit" form="checkout-form" class="w-full mt-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg hover:shadow-lg transition font-semibold">
+                        <button type="submit" form="checkout-form" class="w-full mt-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3  hover:shadow-lg transition font-semibold">
                             Place Order
                         </button>
                         

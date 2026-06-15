@@ -124,11 +124,11 @@
                         </div>
                         
                         <div class="mt-6 space-y-3">
-                            <button onclick="proceedToCheckout()" class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg hover:shadow-lg transition font-semibold">
+                            <button onclick="proceedToCheckout()" class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 hover:shadow-lg transition font-semibold">
                                 Proceed to Checkout
                             </button>
                             
-                            <button onclick="clearCart()" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition font-medium">
+                            <button onclick="clearCart()" class="w-full bg-gray-100 text-gray-700 py-3  hover:bg-gray-200 transition font-medium">
                                 Clear Cart
                             </button>
                         </div>
@@ -159,7 +159,7 @@
                 </svg>
                 <h2 class="text-2xl font-bold text-gray-700 mb-2">Your cart is empty</h2>
                 <p class="text-gray-500 mb-6">Looks like you haven't added any items to your cart yet.</p>
-                <a href="{{ route('shop') }}" class="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition">
+                <a href="{{ route('shop') }}" class="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3  hover:shadow-lg transition">
                     Start Shopping
                 </a>
             </div>
