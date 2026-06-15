@@ -1,7 +1,13 @@
 <?php
 
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\LogisticsController;
+use App\Http\Controllers\Admin\LogisticsController as AdminLogisticsController;
+use App\Http\Controllers\Vendor\ProductController as VendorProductController;
 use App\Http\Controllers\Admin\VendorApprovalController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderController;
+
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\User;
@@ -131,6 +137,16 @@ Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
 
+ // Order routes
+    Route::post('/orders/store', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+    
+    // Payment routes
+    Route::post('/payment/initialize', [PaymentController::class, 'initialize'])->name('payment.initialize');
+    Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
+    Route::get('/order/success/{reference}', [PaymentController::class, 'success'])->name('order.success');
+
+    
 // ========== AUTHENTICATION ROUTES ==========
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
