@@ -48,7 +48,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Benefit 1: Flexible Schedule -->
-            <div class="group bg-white rounded-xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+            <div class="group bg-white rounded-xl p-8 text-center  transition-all duration-300 hover:-translate-y-2 border border-gray-100">
                 <div class="relative mb-6">
                     <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
                         <span class="text-3xl font-bold text-orange-600 group-hover:text-white transition-colors duration-300">1</span>
@@ -64,7 +64,7 @@
             </div>
             
             <!-- Benefit 2: Good Earnings -->
-            <div class="group bg-white rounded-xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+            <div class="group bg-white rounded-xl p-8 text-center  transition-all duration-300 hover:-translate-y-2 border border-gray-100">
                 <div class="relative mb-6">
                     <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
                         <span class="text-3xl font-bold text-orange-600 group-hover:text-white transition-colors duration-300">2</span>
@@ -80,7 +80,7 @@
             </div>
             
             <!-- Benefit 3: Easy Onboarding -->
-            <div class="group bg-white rounded-xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+            <div class="group bg-white rounded-xl p-8 text-center  transition-all duration-300 hover:-translate-y-2 border border-gray-100">
                 <div class="relative mb-6">
                     <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto group-hover:bg-orange-500 transition-colors duration-300">
                         <span class="text-3xl font-bold text-orange-600 group-hover:text-white transition-colors duration-300">3</span>
@@ -242,13 +242,7 @@
         </a>
     @endauth
 </div>
-                <div class="mt-6 pt-6 border-t border-orange-200">
-                    <div class="flex justify-center space-x-4 text-sm text-gray-600">
-                        <span>✓ No hidden fees</span>
-                        <span>✓ Weekly payments</span>
-                        <span>✓ 24/7 support</span>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>
@@ -267,11 +261,9 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="rounded-xl p-6 ">
                 <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                        <span class="text-xl">👨</span>
-                    </div>
+                   
                     <div class="ml-4">
                         <h4 class="font-semibold text-gray-900">Michael O.</h4>
                         <div class="flex text-yellow-400">★★★★★</div>
@@ -281,11 +273,9 @@
                 <div class="mt-3 text-sm text-orange-600">Earns: ₦50,000/month</div>
             </div>
             
-            <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="rounded-xl p-6 ">
                 <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                        <span class="text-xl">👩</span>
-                    </div>
+                   
                     <div class="ml-4">
                         <h4 class="font-semibold text-gray-900">Grace A.</h4>
                         <div class="flex text-yellow-400">★★★★★</div>
@@ -295,11 +285,9 @@
                 <div class="mt-3 text-sm text-orange-600">Earns: ₦65,000/month</div>
             </div>
             
-            <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="rounded-xl p-6 ">
                 <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                        <span class="text-xl">👨</span>
-                    </div>
+                    
                     <div class="ml-4">
                         <h4 class="font-semibold text-gray-900">John O.</h4>
                         <div class="flex text-yellow-400">★★★★★</div>
@@ -323,7 +311,7 @@
         
         <div class="space-y-4">
             <div class="border border-gray-200 rounded-lg overflow-hidden">
-                <button class="faq-question w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 transition font-semibold text-gray-900 flex justify-between items-center">
+                <button class="faq-question w-full text-left px-6 py-4 bg-gray-50 hover:bg-orange-100 transition font-semibold text-gray-900 flex justify-between items-center">
                     How long does it take to get approved?
                     <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -335,7 +323,7 @@
             </div>
             
             <div class="border border-gray-200 rounded-lg overflow-hidden">
-                <button class="faq-question w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 transition font-semibold text-gray-900 flex justify-between items-center">
+                <button class="faq-question w-full text-left px-6 py-4 bg-gray-50 hover:bg-orange-100 transition font-semibold text-gray-900 flex justify-between items-center">
                     How often do I get paid?
                     <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -347,7 +335,7 @@
             </div>
             
             <div class="border border-gray-200 rounded-lg overflow-hidden">
-                <button class="faq-question w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 transition font-semibold text-gray-900 flex justify-between items-center">
+                <button class="faq-question w-full text-left px-6 py-4 bg-gray-50 hover:bg-orange-100 transition font-semibold text-gray-900 flex justify-between items-center">
                     Do I need my own vehicle?
                     <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -359,7 +347,7 @@
             </div>
             
             <div class="border border-gray-200 rounded-lg overflow-hidden">
-                <button class="faq-question w-full text-left px-6 py-4 bg-gray-50 hover:bg-gray-100 transition font-semibold text-gray-900 flex justify-between items-center">
+                <button class="faq-question w-full text-left px-6 py-4 bg-gray-50 hover:bg-orange-100 transition font-semibold text-gray-900 flex justify-between items-center">
                     Are there any upfront fees?
                     <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -373,50 +361,110 @@
     </div>
 </section>
 
-<!-- Final CTA Section -->
-<section class="py-16 bg-gradient-to-r from-orange-500 to-orange-600">
-    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Start Your Journey?
-        </h2>
-        <p class="text-lg text-orange-100 mb-8">
-            Join the fastest-growing delivery network in Nigeria
-        </p>
-         @auth
-        @if(auth()->user()->isLogisticsPartner())
-            <a href="{{ route('logistics.dashboard') }}" 
-               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                Go to Dashboard
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </a>
-        @elseif(auth()->user()->hasLogisticsApplication())
-            <a href="{{ route('logistics.status') }}" 
-               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                Check Application Status
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </a>
-        @else
-            <a href="{{ route('logistics.apply') }}" 
-                class="inline-flex items-center justify-center w-full px-8 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:shadow-lg  transition-all duration-300">
-                Apply Now
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </a>
-        @endif
-    @else
-        <a href="{{ route('login') }}" 
-           class="inline-flex items-center justify-center w-full px-8 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:shadow-lg  transition-all duration-300">
-            Login to Apply
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-            </svg>
-        </a>
-    @endauth
+<!-- Sales CTA Section - Drives Customer & Vendor Actions -->
+<section class="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <!-- Left Side: Text and Button -->
+            <div class="flex-1 text-center lg:text-left">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                    Ready to Join the 
+                    <span class="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Vefiri Community</span>?
+                </h2>
+                
+                <p class="text-base md:text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0">
+                    Start shopping from verified vendors or become a seller today. Thousands of happy customers trust Vefiri for authentic products and secure payments.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    @auth
+                        @if(auth()->user()->isVendor())
+                            <!-- If user is already a vendor, go to vendor dashboard -->
+                            <a href="{{ route('vendor.dashboard') }}" 
+                               class="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-base ">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                                Vendor Dashboard
+                            </a>
+                        @elseif(auth()->user()->isLogisticsPartner())
+                            <!-- If user is a logistics partner, show shop button -->
+                            <a href="{{ route('shop') }}" 
+                               class="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-base ">
+                                Start Shopping
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                            
+                            <a href="{{ route('logistics.dashboard') }}" 
+                               class="inline-flex items-center justify-center px-8 py-3 bg-white border-2 border-orange-500 text-orange-600 font-semibold hover:bg-orange-50 transition-all duration-300 text-base ">
+                                Logistics Dashboard
+                            </a>
+                        @elseif(auth()->user()->hasLogisticsApplication())
+                            <!-- If user has pending logistics application -->
+                            <a href="{{ route('shop') }}" 
+                               class="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-base ">
+                                Start Shopping
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                            
+                            <a href="{{ route('logistics.status') }}" 
+                               class="inline-flex items-center justify-center px-8 py-3 bg-white border-2 border-yellow-500 text-yellow-600 font-semibold hover:bg-yellow-50 transition-all duration-300 text-base ">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                Application Status
+                            </a>
+                        @else
+                            <!-- Regular logged-in user: Show both options -->
+                            <a href="{{ route('shop') }}" 
+                               class="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-base ">
+                                Start Shopping
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                            
+                            <a href="{{ route('vendor.apply') }}" 
+                               class="inline-flex items-center justify-center px-8 py-3 bg-white border-2 border-orange-500 text-orange-600 font-semibold hover:bg-orange-50 transition-all duration-300 text-base ">
+                                Become a Vendor
+                            </a>
+                        @endif
+                    @else
+                        <!-- Guest user: Sign Up and Shop Now -->
+                        <a href="{{ route('signup') }}" 
+                           class="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-base ">
+                            Get Started Now
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        
+                        <a href="{{ route('shop') }}" 
+                           class="inline-flex items-center justify-center px-8 py-3 bg-white border-2 border-orange-500 text-orange-600 font-semibold hover:bg-orange-50 transition-all duration-300 text-base ">
+                            Shop Now
+                        </a>
+                    @endauth
+                </div>
+            </div>
+            
+            <!-- Right Side: Image -->
+            <div class="flex-1 flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-md lg:max-w-lg">
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-orange-200 rounded-full opacity-50 blur-2xl"></div>
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-300 rounded-full opacity-40 blur-2xl"></div>
+                    
+                    <!-- Main Image -->
+                    <img src="{{ asset('images/Group 24.png') }}" 
+                         alt="Vefiri Marketplace Shopping Experience" 
+                         class="relative z-10 w-full h-auto object-contain rounded-none">
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

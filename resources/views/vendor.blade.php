@@ -2,13 +2,29 @@
 
 @section('content')
 <div class="bg-gray-100 min-h-screen">
-    <!-- Hero Banner -->
-    <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Trusted Vendors</h1>
-            <p class="text-lg md:text-xl text-orange-100">Discover amazing products from our verified sellers</p>
+    <!-- Vendor Hero Banner - Matching About Page Style -->
+<section class="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-10"></div>
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div class="text-center max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+                Our Trusted <span class="text-orange-200">Vendors</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-orange-100 mb-4 animate-fade-in-up">
+                Discover amazing products from our verified sellers
+            </p>
         </div>
     </div>
+    
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+        <svg class="w-full h-12 text-white" preserveAspectRatio="none" viewBox="0 0 1440 54">
+            <path fill="currentColor" d="M0 22L120 16.7C240 11 480 0 720 0C960 0 1200 11 1320 16.7L1440 22V54H0V22Z"/>
+        </svg>
+    </div>
+</section>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Search and Filter Section -->

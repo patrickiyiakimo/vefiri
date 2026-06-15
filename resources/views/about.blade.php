@@ -9,11 +9,11 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <div class="text-center max-w-3xl mx-auto">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
-                Shop Our <span class="text-orange-200">Collection</span>
+                About Our <span class="text-orange-200">Collection</span>
             </h1>
-            <p class="text-xl md:text-2xl text-orange-100 mb-4 animate-fade-in-up">
+            <!-- <p class="text-xl md:text-2xl text-orange-100 mb-4 animate-fade-in-up">
                 Discover amazing products from our trusted vendors
-            </p>
+            </p> -->
         </div>
     </div>
     
@@ -27,55 +27,45 @@
 
 
 
-<!-- Mission Section -->
-<section class="py-16 md:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <div class="inline-flex items-center px-3 py-1 bg-orange-100 rounded-full">
-                    <span class="text-orange-600 text-sm font-semibold">Our Mission</span>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-                    Vefiri is more than just an online marketplace
-                </h2>
-                <p class="text-xl text-gray-600 leading-relaxed">
-                    We're creating a trusted ecosystem where quality meets convenience.
-                </p>
-                <blockquote class="border-l-4 border-orange-500 pl-6 py-2">
-                    <p class="text-gray-700 italic leading-relaxed">
+<!-- Mission Section - Centered -->
+<section class="py-16 md:py-24 lg:py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="space-y-8">
+           
+            <!-- Main heading -->
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Vefiri is more than just<br>an online marketplace
+            </h2>
+            
+            <!-- Subheading -->
+            <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
+                We're creating a trusted ecosystem where quality meets convenience.
+            </p>
+            
+            <!-- Blockquote / Core message -->
+            <div class="max-w-3xl mx-auto pt-4">
+                <div class="relative">
+                    <!-- Decorative quote mark -->
+                    <svg class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-10 h-10 text-orange-100/60" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                    
+                    <p class="text-gray-600 text-base md:text-lg italic leading-relaxed px-4 md:px-8">
                         "We believe in empowering local businesses while providing shoppers with a curated selection of authentic products. Every transaction is backed by our commitment to quality and customer satisfaction."
                     </p>
-                    <footer class="mt-3 text-orange-600 font-semibold">
-                        — Vefiri Team
-                    </footer>
-                </blockquote>
-                <p class="text-gray-600 leading-relaxed">
-                    Whether you're looking for the latest fashion trends, electronics, home essentials, or unique gifts, Vefiri brings you a curated selection from Nigeria's best vendors. We're building a community where local businesses thrive and shoppers find exactly what they need.
-                </p>
-            </div>
-            <div class="relative">
-                <div class="absolute -top-4 -left-4 w-24 h-24 bg-orange-200 rounded-full opacity-50 blur-2xl"></div>
-                <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-300 rounded-full opacity-50 blur-2xl"></div>
-                <div class="relative bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 shadow-xl">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-orange-600">500+</div>
-                            <div class="text-sm text-gray-600 mt-1">Active Sellers</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-orange-600">10K+</div>
-                            <div class="text-sm text-gray-600 mt-1">Products Listed</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-orange-600">98%</div>
-                            <div class="text-sm text-gray-600 mt-1">Customer Satisfaction</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-orange-600">24/7</div>
-                            <div class="text-sm text-gray-600 mt-1">Customer Support</div>
-                        </div>
+                    
+                    <div class="mt-6">
+                        <span class="text-orange-600 font-semibold text-sm uppercase tracking-wide">— Vefiri Team</span>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Closing paragraph -->
+            <div class="max-w-2xl mx-auto pt-4">
+                <div class="w-12 h-0.5 bg-orange-200 mx-auto mb-8"></div>
+                <p class="text-gray-500 text-base leading-relaxed">
+                    Whether you're looking for the latest fashion trends, electronics, home essentials, or unique gifts, Vefiri brings you a curated selection from Nigeria's best vendors. We're building a community where local businesses thrive and shoppers find exactly what they need.
+                </p>
             </div>
         </div>
     </div>
@@ -95,7 +85,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Feature 1: Curated Marketplace -->
-            <div class="group bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="group  rounded-xl p-6 text-center  transition-all duration-300 hover:-translate-y-1">
                 <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-500 transition-colors duration-300">
                     <svg class="w-8 h-8 text-orange-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -106,7 +96,7 @@
             </div>
             
             <!-- Feature 2: Verified Sellers -->
-            <div class="group bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="group  rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1">
                 <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-500 transition-colors duration-300">
                     <svg class="w-8 h-8 text-orange-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -117,7 +107,7 @@
             </div>
             
             <!-- Feature 3: Fast Delivery -->
-            <div class="group bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="group  rounded-xl p-6 text-center  transition-all duration-300 hover:-translate-y-1">
                 <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-500 transition-colors duration-300">
                     <svg class="w-8 h-8 text-orange-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -128,7 +118,7 @@
             </div>
             
             <!-- Feature 4: Best Prices -->
-            <div class="group bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="group  rounded-xl p-6 text-center  transition-all duration-300 hover:-translate-y-1">
                 <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-500 transition-colors duration-300">
                     <svg class="w-8 h-8 text-orange-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -141,126 +131,92 @@
     </div>
 </section>
 
-<!-- Stats & Benefits Section -->
+<<!-- Stats & Benefits Section - With Image on Left -->
 <section class="py-16 md:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Stats Grid -->
-            <div>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 text-center">
-                        <div class="text-4xl font-bold text-orange-600 mb-2">500+</div>
-                        <div class="text-gray-700 font-semibold">Active Sellers</div>
-                        <div class="text-sm text-gray-500 mt-1">Growing daily</div>
-                    </div>
-                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 text-center">
-                        <div class="text-4xl font-bold text-green-600 mb-2">10K+</div>
-                        <div class="text-gray-700 font-semibold">Products Listed</div>
-                        <div class="text-sm text-gray-500 mt-1">Always expanding</div>
-                    </div>
-                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center">
-                        <div class="text-4xl font-bold text-blue-600 mb-2">98%</div>
-                        <div class="text-gray-700 font-semibold">Customer Satisfaction</div>
-                        <div class="text-sm text-gray-500 mt-1">Happy customers</div>
-                    </div>
-                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 text-center">
-                        <div class="text-4xl font-bold text-purple-600 mb-2">24/7</div>
-                        <div class="text-gray-700 font-semibold">Customer Support</div>
-                        <div class="text-sm text-gray-500 mt-1">Always here for you</div>
-                    </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Side: Image -->
+            <div class="relative order-1 lg:order-1">
+                
+                <div class="relative  overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop" 
+                         alt="Shopping experience at Vefiri" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent"></div>
                 </div>
+                
+               
             </div>
             
-            <!-- Benefits List -->
-            <div class="space-y-6">
+            <!-- Right Side: Benefits List -->
+            <div class="space-y-6 order-2 lg:order-2">
                 <div>
                     <div class="inline-flex items-center px-3 py-1 bg-orange-100 rounded-full mb-4">
                         <span class="text-orange-600 text-sm font-semibold">Why Shop With Us</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Shopping Benefits</h3>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Shopping Benefits</h3>
+                    <p class="text-gray-500">Experience seamless shopping with premium benefits designed for you.</p>
                 </div>
                 
-                <div class="space-y-4">
-                    <div class="flex items-start space-x-3 group cursor-pointer">
-                        <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors">
+                <div class="space-y-5">
+                    <div class="flex items-start space-x-3 group">
+                        <div class="w-7 h-7 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors">
                             <svg class="w-4 h-4 text-green-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-gray-900">Secure Payments</h4>
-                            <p class="text-gray-600 text-sm">Multiple payment options with advanced encryption for your safety</p>
+                            <h4 class="font-semibold text-gray-900 text-lg">Secure Payments</h4>
+                            <p class="text-gray-500 text-sm">Multiple payment options with advanced encryption for your safety</p>
                         </div>
                     </div>
                     
-                    <div class="flex items-start space-x-3 group cursor-pointer">
-                        <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors">
+                    <div class="flex items-start space-x-3 group">
+                        <div class="w-7 h-7 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors">
                             <svg class="w-4 h-4 text-green-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-gray-900">Free Delivery on Orders ₦50,000+</h4>
-                            <p class="text-gray-600 text-sm">Enjoy free shipping on orders above ₦50,000 across Nigeria</p>
+                            <h4 class="font-semibold text-gray-900 text-lg">Free Delivery on Orders ₦150,000+</h4>
+                            <p class="text-gray-500 text-sm">Enjoy free shipping on orders above ₦150,000 across Nigeria</p>
                         </div>
                     </div>
                     
-                    <div class="flex items-start space-x-3 group cursor-pointer">
-                        <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors">
+                    <div class="flex items-start space-x-3 group">
+                        <div class="w-7 h-7 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors">
                             <svg class="w-4 h-4 text-green-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-gray-900">30-Day Returns</h4>
-                            <p class="text-gray-600 text-sm">Not satisfied? Return within 30 days for a full refund</p>
+                            <h4 class="font-semibold text-gray-900 text-lg">30-Day Returns</h4>
+                            <p class="text-gray-500 text-sm">Not satisfied? Return within 30 days for a full refund</p>
                         </div>
                     </div>
                     
-                    <div class="flex items-start space-x-3 group cursor-pointer">
-                        <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors">
+                    <div class="flex items-start space-x-3 group">
+                        <div class="w-7 h-7 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors">
                             <svg class="w-4 h-4 text-green-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-gray-900">Verified Vendors</h4>
-                            <p class="text-gray-600 text-sm">All sellers are thoroughly vetted for authenticity and reliability</p>
+                            <h4 class="font-semibold text-gray-900 text-lg">Verified Vendors</h4>
+                            <p class="text-gray-500 text-sm">All sellers are thoroughly vetted for authenticity and reliability</p>
                         </div>
                     </div>
                 </div>
+                
+               
             </div>
         </div>
     </div>
 </section>
 
 <!-- CTA Section -->
-<section class="py-16 bg-gradient-to-r from-orange-500 to-orange-600">
-    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Start Shopping?
-        </h2>
-        <p class="text-lg text-orange-100 mb-8">
-            Join thousands of satisfied customers shopping on Vefiri today
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('shop') }}" 
-               class="inline-flex items-center justify-center px-8 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                Shop Now
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </a>
-            <a href="{{ route('signup') }}" 
-               class="inline-flex items-center justify-center px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-orange-600 transition-all duration-300">
-                Become a Seller
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </a>
-        </div>
-    </div>
-</section>
+    @include('promotion-banner')
+
 
 <style>
     @keyframes fade-in {

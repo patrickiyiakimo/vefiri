@@ -350,7 +350,7 @@
                                 </div>
                             </div>
                             <button onclick="addToCart(${product.id})" 
-                                class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-2 rounded-lg hover:shadow-lg transition ${isOutOfStock ? 'opacity-50 cursor-not-allowed' : ''}"
+                                class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-2  hover:shadow-lg transition ${isOutOfStock ? 'opacity-50 cursor-not-allowed' : ''}"
                                 ${isOutOfStock ? 'disabled' : ''}>
                                 Add to Cart
                             </button>
