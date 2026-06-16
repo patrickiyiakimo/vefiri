@@ -138,15 +138,16 @@
                     <div class="p-6 space-y-3">
                         <div>
                             <p class="text-sm text-gray-500">Name</p>
-                            <p class="font-medium text-gray-900">{{ $order->first_name }} {{ $order->last_name }}</p>
+                            <p class="font-medium text-gray-900">  {{  $order->user->name  }} 
+                                    {{ $order->user->last_name }}</p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-500">Email</p>
-                            <p class="font-medium text-gray-900">{{ $order->email }}</p>
+                            <p class="font-medium text-gray-900">{{ $order->user->email }}</p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-500">Phone</p>
-                            <p class="font-medium text-gray-900">{{ $order->phone }}</p>
+                            <p class="font-medium text-gray-900">{{ $order->user->phone }}</p>
                         </div>
                     </div>
                 </div>

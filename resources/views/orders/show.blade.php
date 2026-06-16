@@ -218,17 +218,17 @@
                             <div>
                                 <p class="text-sm text-gray-500">Full Name</p>
                                 <p class="font-semibold text-gray-900">
-                                    {{ $order->first_name ?? $order->user->name ?? 'N/A' }} 
-                                    {{ $order->last_name ?? '' }}
+                                    {{  $order->user->name  }} 
+                                    {{ $order->user->last_name }}
                                 </p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500">Email Address</p>
-                                <p class="font-semibold text-gray-900">{{ $order->email ?? $order->user->email ?? 'N/A' }}</p>
+                                <p class="font-semibold text-gray-900">{{ $order->user->email }}</p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500">Phone Number</p>
-                                <p class="font-semibold text-gray-900">{{ $order->phone ?? $order->user->phone ?? 'N/A' }}</p>
+                                <p class="font-semibold text-gray-900">{{ $order->user->phone }}</p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500">Shipping Address</p>
