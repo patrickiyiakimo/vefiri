@@ -138,6 +138,7 @@ Route::get('/cart', function () {
 })->name('cart');
 
  // Order routes
+     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::post('/orders/store', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
     

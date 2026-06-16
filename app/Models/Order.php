@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 
 class Order extends Model
 {
@@ -12,6 +13,14 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'order_number',
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+        'address',
+        'city',
+        'state',
+        'zip_code',
         'status',
         'payment_status',
         'subtotal',
@@ -41,5 +50,20 @@ class Order extends Model
     public function items()
     {
         return $this->hasMany(OrderItem::class);
+    }
+    
+    // Relationship with payment - check if table exists
+    public function payment()
+    {
+        if (Schema::hasTable('payments')) {
+            return $this->hasOne(Payment::class);
+        }
+        return null;
+    }
+    
+    // Accessor for full name
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

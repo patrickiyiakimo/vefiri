@@ -203,60 +203,73 @@
                 </div>
 
                 <!-- Orders Tab -->
-                <div id="tab-orders" class="profile-tab-content hidden">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <div class="p-6 border-b border-gray-200">
-                            <h2 class="text-xl font-bold text-gray-900">My Orders</h2>
+<div id="tab-orders" class="profile-tab-content hidden">
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-gray-900">My Orders</h2>
+            <a href="{{ route('orders.index') }}" class="text-orange-600 hover:text-orange-700 transition text-sm font-medium flex items-center">
+                View All Orders
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+        
+        @php
+            $recentOrders = \App\Models\Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->limit(5)->get();
+        @endphp
+        
+        @if($recentOrders->count() > 0)
+            <div class="divide-y divide-gray-200">
+                @foreach($recentOrders as $order)
+                <div class="p-6 hover:bg-gray-50 transition">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">#{{ $order->order_number }}</p>
+                            <p class="text-xs text-gray-500">{{ $order->created_at->format('M d, Y') }}</p>
                         </div>
-                        
-                        @php
-                            $orders = \App\Models\Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
-                        @endphp
-                        
-                        @if($orders->count() > 0)
-                            <div class="divide-y divide-gray-200">
-                                @foreach($orders as $order)
-                                <div class="p-6 hover:bg-gray-50 transition">
-                                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                                        <div>
-                                            <p class="text-sm text-gray-500">Order #{{ $order->order_number }}</p>
-                                            <p class="text-sm text-gray-500">Placed on {{ $order->created_at->format('F j, Y') }}</p>
-                                        </div>
-                                        <div class="mt-2 md:mt-0">
-                                            <span class="px-3 py-1 text-xs rounded-full 
-                                                {{ $order->status === 'completed' ? 'bg-green-100 text-green-700' : 
-                                                   ($order->status === 'processing' ? 'bg-blue-100 text-blue-700' : 
-                                                   ($order->status === 'pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700')) }}">
-                                                {{ ucfirst($order->status) }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex justify-between items-end">
-                                        <div>
-                                            <p class="text-lg font-bold text-orange-600">₦{{ number_format($order->total, 2) }}</p>
-                                            <p class="text-sm text-gray-500">{{ $order->items->count() }} item(s)</p>
-                                        </div>
-                                        <button onclick="viewOrder({{ $order->id }})" class="text-orange-600 hover:text-orange-700 transition text-sm font-medium">
-                                            View Details →
-                                        </button>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        @else
-                            <div class="p-12 text-center">
-                                <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                                </svg>
-                                <p class="text-gray-500">You haven't placed any orders yet.</p>
-                                <a href="{{ route('shop') }}" class="inline-block mt-4 text-orange-600 hover:text-orange-700 transition">
-                                    Start Shopping →
-                                </a>
-                            </div>
-                        @endif
+                        <div class="mt-2 md:mt-0">
+                            <span class="px-2 py-1 text-xs rounded-full 
+                                {{ $order->status === 'completed' ? 'bg-green-100 text-green-700' : 
+                                   ($order->status === 'processing' ? 'bg-blue-100 text-blue-700' : 
+                                   ($order->status === 'pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-700')) }}">
+                                {{ ucfirst($order->status) }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-lg font-bold text-orange-600">₦{{ number_format($order->total, 2) }}</p>
+                            <p class="text-xs text-gray-500">{{ $order->items->count() }} item(s)</p>
+                        </div>
+                        <a href="{{ route('orders.show', $order) }}" class="text-orange-600 hover:text-orange-700 transition text-sm font-medium">
+                            View Details →
+                        </a>
                     </div>
                 </div>
+                @endforeach
+            </div>
+            
+            @if($recentOrders->count() >= 5)
+            <div class="p-4 bg-gray-50 text-center">
+                <a href="{{ route('orders.index') }}" class="text-orange-600 hover:text-orange-700 transition text-sm">
+                    View all orders →
+                </a>
+            </div>
+            @endif
+        @else
+            <div class="p-12 text-center">
+                <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                </svg>
+                <p class="text-gray-500">You haven't placed any orders yet.</p>
+                <a href="{{ route('shop') }}" class="inline-block mt-4 text-orange-600 hover:text-orange-700 transition">
+                    Start Shopping →
+                </a>
+            </div>
+        @endif
+    </div>
+</div>
 
                 <!-- Wishlist Tab -->
                 <div id="tab-wishlist" class="profile-tab-content hidden">
