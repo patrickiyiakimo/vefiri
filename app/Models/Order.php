@@ -21,8 +21,8 @@ class Order extends Model
         'city',
         'state',
         'zip_code',
-        'status',
-        'payment_status',
+        'status',              // Make sure this is here
+        'payment_status',      // Make sure this is here
         'subtotal',
         'tax',
         'shipping_cost',
@@ -52,7 +52,7 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
     
-    // Relationship with payment - check if table exists
+    // Relationship with payment
     public function payment()
     {
         if (Schema::hasTable('payments')) {

@@ -590,7 +590,17 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/vendors/pending', [VendorApprovalController::class, 'pendingVendors'])->name('admin.vendors.pending');
     Route::post('/vendors/{user}/approve', [VendorApprovalController::class, 'approve'])->name('admin.vendors.approve');
     Route::post('/vendors/{user}/reject', [VendorApprovalController::class, 'reject'])->name('admin.vendors.reject');
-});
+
+ // Order Management Routes
+    Route::get('/orders', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('/orders/{order}', [App\Http\Controllers\Admin\OrderController::class, 'show'])->name('admin.orders.show');
+    Route::post('/orders/{order}/update-status', [App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('admin.orders.update-status');
+    Route::post('/orders/{order}/update-payment', [App\Http\Controllers\Admin\OrderController::class, 'updatePaymentStatus'])->name('admin.orders.update-payment');
+    Route::delete('/orders/{order}', [App\Http\Controllers\Admin\OrderController::class, 'destroy'])->name('admin.orders.destroy');
+    Route::get('/orders/export', [App\Http\Controllers\Admin\OrderController::class, 'export'])->name('admin.orders.export');
+    Route::post('/orders/bulk-update', [App\Http\Controllers\Admin\OrderController::class, 'bulkUpdateStatus'])->name('admin.orders.bulk-update');
+
+    });
 
 // ========== VENDOR APPLICATION ROUTES ==========
 Route::middleware(['auth'])->group(function () {

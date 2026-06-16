@@ -156,4 +156,49 @@ class OrderController extends Controller
         
         return view('orders.show', compact('order'));
     }
+
+    /**
+ * Update order status
+ */
+public function updateStatus(Request $request, Order $order)
+{
+    $request->validate([
+        'status' => 'required|in:pending,processing,shipped,delivered,completed,cancelled',
+        'notes' => 'nullable|string'
+    ]);
+
+    try {
+        $oldStatus = $order->status;
+        
+        // Update the order status
+        $order->status = $request->status;
+        
+        // If notes are provided, append them
+        if ($request->filled('notes')) {
+            $order->notes = $order->notes 
+                ? $order->notes . "\n\nAdmin Note (" . now()->format('Y-m-d H:i') . "): " . $request->notes 
+                : "Admin Note (" . now()->format('Y-m-d H:i') . "): " . $request->notes;
+        }
+        
+        // If order is delivered or completed, update payment status if still pending
+        if (in_array($request->status, ['delivered', 'completed']) && $order->payment_status === 'pending') {
+            $order->payment_status = 'paid';
+        }
+
+        // If order is cancelled, restore product stock
+        if ($request->status === 'cancelled' && $oldStatus !== 'cancelled') {
+            foreach ($order->items as $item) {
+                $item->product->increment('stock_quantity', $item->quantity);
+            }
+        }
+
+        $order->save();
+
+        return redirect()->back()->with('success', 'Order status updated successfully from "' . $oldStatus . '" to "' . $request->status . '"!');
+
+    } catch (\Exception $e) {
+        Log::error('Order status update failed: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Failed to update order status: ' . $e->getMessage());
+    }
+}
 }
