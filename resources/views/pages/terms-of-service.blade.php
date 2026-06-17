@@ -17,17 +17,7 @@
             <p class="text-lg text-gray-600">Last Updated: {{ date('F j, Y') }}</p>
         </div>
 
-        <!-- Last Updated Badge -->
-        <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-8 flex items-center justify-between">
-            <div class="flex items-center">
-                <svg class="w-5 h-5 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span class="text-sm text-gray-700">These terms were last updated on <strong>{{ date('F j, Y') }}</strong></span>
-            </div>
-            <a href="#contact" class="text-sm text-orange-600 hover:text-orange-700 font-medium">Contact Us →</a>
-        </div>
-
+       
         <!-- Content -->
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div class="divide-y divide-gray-200">
