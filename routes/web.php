@@ -49,6 +49,10 @@ Route::get('/terms-of-service', function () {
     return view('pages.terms-of-service');
 })->name('terms-of-service');
 
+Route::get('/faq', function () {
+    return view('pages.faq');
+})->name('faq');
+
 // API route for products (AJAX filtering)
 Route::get('/api/products', function (Request $request) {
     $query = Product::where('is_active', true);
