@@ -97,7 +97,7 @@
                 <h3 class="text-lg font-semibold mb-6">Customer Service</h3>
                 <ul class="space-y-3">
                     <li>
-                        <a href="#" class="text-gray-400 hover:text-orange-400 transition duration-300 flex items-center group">
+                        <a href="{{ route('contact') }}" class="text-gray-400 hover:text-orange-400 transition duration-300 flex items-center group">
                             <svg class="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
@@ -113,7 +113,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-gray-400 hover:text-orange-400 transition duration-300 flex items-center group">
+                        <a href="{{ route('shipping-policy') }}" class="text-gray-400 hover:text-orange-400 transition duration-300 flex items-center group">
                             <svg class="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
@@ -121,7 +121,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-gray-400 hover:text-orange-400 transition duration-300 flex items-center group">
+                        <a href="{{ route('returns-refund') }}" class="text-gray-400 hover:text-orange-400 transition duration-300 flex items-center group">
                             <svg class="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>

@@ -7,6 +7,8 @@ use App\Http\Controllers\Vendor\ProductController as VendorProductController;
 use App\Http\Controllers\Admin\VendorApprovalController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
+
 
 use App\Models\Product;
 use App\Models\Category;
@@ -52,6 +54,17 @@ Route::get('/terms-of-service', function () {
 Route::get('/faq', function () {
     return view('pages.faq');
 })->name('faq');
+
+Route::get('/shipping-policy', function () {
+    return view('pages.shipping-policy');
+})->name('shipping-policy');
+
+Route::get('/returns-refund', function () {
+    return view('pages.returns-refund');
+})->name('returns-refund');
+
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 // API route for products (AJAX filtering)
 Route::get('/api/products', function (Request $request) {
