@@ -187,13 +187,11 @@
             <p class="text-gray-400 text-sm">
                 &copy; {{ date('Y') }} Vefiri. All rights reserved.
             </p>
-            <div class="flex justify-center space-x-4 mt-4 text-xs text-gray-500">
-                <a href="#" class="hover:text-orange-400 transition">Terms of Service</a>
-                <span>|</span>
-                <a href="#" class="hover:text-orange-400 transition">Privacy Policy</a>
-                <span>|</span>
-                <a href="#" class="hover:text-orange-400 transition">Cookie Policy</a>
-            </div>
+            <!-- In your footer section -->
+<div class="flex flex-wrap justify-center gap-6 text-sm">
+    <a href="{{ route('privacy-policy') }}" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+    <a href="{{ route('terms-of-service') }}" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+</div>
         </div>
     </div>
 </footer>

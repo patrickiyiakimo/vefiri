@@ -40,6 +40,15 @@ Route::get('/logistics', function () {
     return view('logistics');
 })->name('logistics');
 
+// Privacy & Terms Pages
+Route::get('/privacy-policy', function () {
+    return view('pages.privacy-policy');
+})->name('privacy-policy');
+
+Route::get('/terms-of-service', function () {
+    return view('pages.terms-of-service');
+})->name('terms-of-service');
+
 // API route for products (AJAX filtering)
 Route::get('/api/products', function (Request $request) {
     $query = Product::where('is_active', true);
