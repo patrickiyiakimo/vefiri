@@ -8,7 +8,7 @@
                 <h1 class="text-3xl font-bold text-gray-900">Vendor Dashboard</h1>
                 <p class="text-gray-600 mt-2">Welcome back, {{ Auth::user()->name }}!</p>
             </div>
-            <a href="{{ route('vendor.products.create') }}" class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition">
+            <a href="{{ route('vendor.products.create') }}" class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 hover:shadow-lg transition">
                 + Add New Product
             </a>
         </div>
