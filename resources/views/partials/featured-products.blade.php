@@ -35,7 +35,8 @@
                             <span class="text-sm text-gray-400 line-through ml-2">₦25,000.00</span>
                         </div>
                         <button onclick="addToCart(1)" 
-                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
+                            class="add-to-cart-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1"
+                            data-product-id="1">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
                             </svg>
@@ -63,7 +64,8 @@
                             <span class="text-sm text-gray-400 line-through ml-2">₦899.00</span>
                         </div>
                         <button onclick="addToCart(2)" 
-                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
+                            class="add-to-cart-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1"
+                            data-product-id="2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
                             </svg>
@@ -75,7 +77,7 @@
             <!-- Product 3: Standing Fan -->
             <div class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                 <div class="relative overflow-hidden h-64 bg-gradient-to-br from-gray-100 to-gray-300">
-                    <img src=https://images.pexels.com/photos/[NEW_PHOTO_ID]/pexels-photo-[NEW_PHOTO_ID].jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop" 
                          alt="Standing Fan" 
                          class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10 animate-pulse">
@@ -94,7 +96,8 @@
                             <span class="text-sm text-gray-400 line-through ml-2">₦2,999.00</span>
                         </div>
                         <button onclick="addToCart(3)" 
-                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
+                            class="add-to-cart-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1"
+                            data-product-id="3">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
                             </svg>
@@ -121,7 +124,8 @@
                             <span class="text-2xl font-bold text-orange-600">₦3,999.00</span>
                         </div>
                         <button onclick="addToCart(4)" 
-                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
+                            class="add-to-cart-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1"
+                            data-product-id="4">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
                             </svg>
@@ -152,7 +156,8 @@
                             <span class="text-sm text-gray-400 line-through ml-2">₦2,999.00</span>
                         </div>
                         <button onclick="addToCart(5)" 
-                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
+                            class="add-to-cart-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1"
+                            data-product-id="5">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
                             </svg>
@@ -180,7 +185,8 @@
                             <span class="text-sm text-gray-400 line-through ml-2">₦4,999.00</span>
                         </div>
                         <button onclick="addToCart(6)" 
-                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
+                            class="add-to-cart-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1"
+                            data-product-id="6">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
                             </svg>
@@ -211,7 +217,8 @@
                             <span class="text-sm text-gray-400 line-through ml-2">₦3,999.00</span>
                         </div>
                         <button onclick="addToCart(7)" 
-                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
+                            class="add-to-cart-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1"
+                            data-product-id="7">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
                             </svg>
@@ -239,7 +246,8 @@
                             <span class="text-sm text-gray-400 line-through ml-2">₦1,999.00</span>
                         </div>
                         <button onclick="addToCart(8)" 
-                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1">
+                            class="add-to-cart-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-2 rounded-lg hover:shadow-lg transition transform hover:-translate-y-1"
+                            data-product-id="8">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
                             </svg>
@@ -252,7 +260,7 @@
         <!-- View All Products Button -->
         <div class="text-center mt-12">
             <a href="{{ route('shop') }}" 
-               class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold  hover:shadow-lg transition transform hover:-translate-y-1">
+               class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transition transform hover:-translate-y-1">
                 View All Products
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -267,43 +275,114 @@
         // Get CSRF token from meta tag
         const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         
+        // Check if user is logged in by checking if there's a user element
+        const isLoggedIn = document.querySelector('nav .user-menu') !== null || 
+                          document.querySelector('nav [x-data]') !== null;
+        
+        if (!token) {
+            showNotification('Please refresh the page and try again.', 'error');
+            return;
+        }
+        
+        // Disable the button to prevent multiple clicks
+        const buttons = document.querySelectorAll(`.add-to-cart-btn[data-product-id="${productId}"]`);
+        buttons.forEach(btn => {
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            btn.innerHTML = `
+                <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+            `;
+        });
+        
         fetch('/cart/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': token
+                'X-CSRF-TOKEN': token,
+                'Accept': 'application/json'
             },
-            body: JSON.stringify({ product_id: productId, quantity: 1 })
+            body: JSON.stringify({ 
+                product_id: productId, 
+                quantity: 1 
+            })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                // If response is 401, user is not authenticated
+                if (response.status === 401) {
+                    throw new Error('Please login to add items to cart');
+                }
+                return response.json().then(err => { throw new Error(err.message || 'Something went wrong'); });
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
-                showNotification('Product added to cart!', 'success');
+                showNotification('✅ Product added to cart!', 'success');
+                
+                // Update cart count in navbar
+                if (window.updateCartCount) {
+                    window.updateCartCount(data.cart_count);
+                }
+                
+                // Update local cart count display
+                const cartCountElement = document.querySelector('.cart-count');
+                if (cartCountElement) {
+                    cartCountElement.textContent = data.cart_count;
+                    if (data.cart_count > 0) {
+                        cartCountElement.style.display = 'flex';
+                    }
+                }
             } else {
-                showNotification('Please login to add items to cart', 'error');
+                showNotification(data.message || 'Failed to add item to cart.', 'error');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            showNotification('Please login to add items to cart', 'error');
+            showNotification(error.message || 'Please login to add items to cart', 'error');
+        })
+        .finally(() => {
+            // Re-enable the button
+            buttons.forEach(btn => {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
+                    </svg>
+                `;
+            });
         });
     }
 
     function showNotification(message, type) {
+        // Remove existing notifications
+        document.querySelectorAll('.custom-notification').forEach(el => el.remove());
+        
         const notification = document.createElement('div');
-        notification.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg shadow-lg text-white transform transition-all duration-300 translate-x-full ${
+        notification.className = `custom-notification fixed top-20 right-4 z-50 px-6 py-3 rounded-lg shadow-lg text-white transform transition-all duration-300 translate-x-full ${
             type === 'success' ? 'bg-green-500' : 'bg-red-500'
         }`;
+        notification.style.minWidth = '250px';
+        notification.style.maxWidth = '400px';
         notification.innerHTML = message;
         document.body.appendChild(notification);
         
+        // Trigger slide in
         setTimeout(() => {
             notification.classList.remove('translate-x-full');
         }, 100);
         
+        // Slide out and remove
         setTimeout(() => {
             notification.classList.add('translate-x-full');
-            setTimeout(() => notification.remove(), 300);
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
         }, 3000);
     }
 </script>
@@ -321,5 +400,23 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+    }
+    
+    .custom-notification {
+        z-index: 9999;
+    }
+    
+    .add-to-cart-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.6 !important;
+    }
+    
+    .add-to-cart-btn svg.animate-spin {
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
 </style>
