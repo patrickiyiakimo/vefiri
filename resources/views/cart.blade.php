@@ -29,23 +29,50 @@
                                     $product = $item->product;
                                     $subtotal = $product->price * $item->quantity;
                                     $total += $subtotal;
+                                    
+                                    // Handle images properly
+                                    $images = $product->images ?? [];
+                                    if (is_string($images)) {
+                                        $images = json_decode($images, true) ?? [];
+                                    }
+                                    
+                                    // Fallback images based on product ID
+                                    $fallbackImages = [
+                                        1 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop',
+                                        2 => 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=200&h=200&fit=crop',
+                                        3 => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=200&h=200&fit=crop',
+                                        4 => 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop',
+                                        5 => 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=200&h=200&fit=crop',
+                                        6 => 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=200&h=200&fit=crop',
+                                        7 => 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
+                                        8 => 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=200&h=200&fit=crop',
+                                        9 => 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200&h=200&fit=crop',
+                                        10 => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200&h=200&fit=crop',
+                                        11 => 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=200&h=200&fit=crop',
+                                        12 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop',
+                                    ];
+                                    
+                                    $imageUrl = null;
+                                    if (is_array($images) && count($images) > 0 && !empty($images[0])) {
+                                        $imageUrl = asset('storage/' . $images[0]);
+                                    } elseif (isset($fallbackImages[$product->id])) {
+                                        $imageUrl = $fallbackImages[$product->id];
+                                    } else {
+                                        $imageUrl = 'https://images.unsplash.com/photo-1518834107818-ae3d91a17a95?w=200&h=200&fit=crop';
+                                    }
                                 @endphp
                                 <div class="p-4 cart-item" data-item-id="{{ $item->id }}">
                                     <div class="flex flex-col md:grid md:grid-cols-12 gap-4 items-center">
                                         <!-- Product Info -->
                                         <div class="md:col-span-6 flex items-center space-x-4 w-full">
                                             <div class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
-                                                @if($product->images && is_array($product->images) && count($product->images) > 0)
-                                                    <img src="{{ asset('storage/' . $product->images[0]) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
-                                                @else
-                                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                                    </svg>
-                                                @endif
+                                                <img src="{{ $imageUrl }}" 
+                                                     alt="{{ $product->name }}" 
+                                                     class="w-full h-full object-cover">
                                             </div>
                                             <div class="flex-1">
                                                 <h3 class="font-semibold text-gray-900">{{ $product->name }}</h3>
-                                                <p class="text-sm text-gray-500">{{ $product->sku }}</p>
+                                                <p class="text-sm text-gray-500">{{ $product->sku ?? 'SKU-' . $product->id }}</p>
                                                 <button onclick="removeFromCart({{ $item->id }})" class="mt-2 text-sm text-red-600 hover:text-red-700 transition flex items-center">
                                                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
@@ -128,7 +155,7 @@
                                 Proceed to Checkout
                             </button>
                             
-                            <button onclick="clearCart()" class="w-full bg-gray-100 text-gray-700 py-3  hover:bg-gray-200 transition font-medium">
+                            <button onclick="clearCart()" class="w-full bg-gray-100 text-gray-700 py-3 hover:bg-gray-200 transition font-medium">
                                 Clear Cart
                             </button>
                         </div>
@@ -159,7 +186,7 @@
                 </svg>
                 <h2 class="text-2xl font-bold text-gray-700 mb-2">Your cart is empty</h2>
                 <p class="text-gray-500 mb-6">Looks like you haven't added any items to your cart yet.</p>
-                <a href="{{ route('shop') }}" class="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3  hover:shadow-lg transition">
+                <a href="{{ route('shop') }}" class="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 hover:shadow-lg transition">
                     Start Shopping
                 </a>
             </div>
@@ -172,6 +199,13 @@
         if (newQuantity < 1) {
             removeFromCart(itemId);
             return;
+        }
+        
+        // Prevent multiple rapid clicks
+        const btn = document.querySelector(`button[onclick="updateQuantity(${itemId}, ${newQuantity})"]`);
+        if (btn) {
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
         }
         
         fetch('/cart/update', {
@@ -209,6 +243,12 @@
         .catch(error => {
             console.error('Error:', error);
             showNotification('Error updating cart', 'error');
+        })
+        .finally(() => {
+            if (btn) {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }
         });
     }
     
@@ -225,10 +265,20 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Remove the item row
+                    // Remove the item row with animation
                     const itemElement = document.querySelector(`.cart-item[data-item-id="${itemId}"]`);
                     if (itemElement) {
-                        itemElement.remove();
+                        itemElement.style.transition = 'all 0.3s ease';
+                        itemElement.style.opacity = '0';
+                        itemElement.style.transform = 'translateX(50px)';
+                        setTimeout(() => {
+                            itemElement.remove();
+                            // Check if cart is empty
+                            const remainingItems = document.querySelectorAll('.cart-item').length;
+                            if (remainingItems === 0) {
+                                location.reload();
+                            }
+                        }, 300);
                     }
                     
                     // Update cart totals
@@ -240,12 +290,6 @@
                     }
                     
                     showNotification('Item removed from cart!', 'success');
-                    
-                    // Check if cart is empty
-                    const remainingItems = document.querySelectorAll('.cart-item').length;
-                    if (remainingItems === 0) {
-                        location.reload();
-                    }
                 }
             })
             .catch(error => {
@@ -278,7 +322,6 @@
     }
     
     function updateCartTotals() {
-        // Fetch updated cart totals from server
         fetch('/cart/totals', {
             method: 'GET',
             headers: {
@@ -303,25 +346,42 @@
     }
     
     function formatPrice(price) {
-        return '₦' + parseFloat(price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        return '₦' + parseFloat(price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
     
     function showNotification(message, type) {
+        // Remove existing notifications
+        document.querySelectorAll('.cart-notification').forEach(el => el.remove());
+        
         const notification = document.createElement('div');
-        notification.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg shadow-lg text-white transform transition-all duration-300 translate-x-full ${
+        notification.className = `cart-notification fixed top-20 right-4 z-[9999] px-6 py-3 rounded-lg shadow-lg text-white transform transition-all duration-300 translate-x-full ${
             type === 'success' ? 'bg-green-500' : 'bg-red-500'
         }`;
+        notification.style.minWidth = '250px';
+        notification.style.maxWidth = '400px';
         notification.innerHTML = message;
         document.body.appendChild(notification);
         
+        // Trigger slide in
         setTimeout(() => {
             notification.classList.remove('translate-x-full');
         }, 100);
         
+        // Slide out and remove
         setTimeout(() => {
             notification.classList.add('translate-x-full');
-            setTimeout(() => notification.remove(), 300);
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
         }, 3000);
     }
 </script>
+
+<style>
+    .cart-notification {
+        z-index: 9999 !important;
+    }
+</style>
 @endsection
