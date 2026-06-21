@@ -19,6 +19,22 @@
             $shipping = $subtotal > 50000 ? 0 : 3000;
             $tax = $subtotal * 0.075;
             $total = $subtotal + $shipping + $tax;
+            
+            // Fallback images for products without images
+            $fallbackImages = [
+                1 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop',
+                2 => 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=200&h=200&fit=crop',
+                3 => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=200&h=200&fit=crop',
+                4 => 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop',
+                5 => 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=200&h=200&fit=crop',
+                6 => 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=200&h=200&fit=crop',
+                7 => 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
+                8 => 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=200&h=200&fit=crop',
+                9 => 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200&h=200&fit=crop',
+                10 => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200&h=200&fit=crop',
+                11 => 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=200&h=200&fit=crop',
+                12 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop',
+            ];
         @endphp
 
         <div class="flex flex-col lg:flex-row gap-8">
@@ -158,20 +174,27 @@
                         <!-- Cart Items -->
                         <div class="max-h-80 overflow-y-auto mb-4">
                             @foreach($cartItems as $item)
+                            @php
+                                // Handle images properly
+                                $productImages = $item->product->images ?? [];
+                                if (is_string($productImages)) {
+                                    $productImages = json_decode($productImages, true) ?? [];
+                                }
+                                
+                                $imageUrl = null;
+                                if (is_array($productImages) && count($productImages) > 0 && !empty($productImages[0])) {
+                                    $imageUrl = asset('storage/' . $productImages[0]);
+                                } elseif (isset($fallbackImages[$item->product->id])) {
+                                    $imageUrl = $fallbackImages[$item->product->id];
+                                } else {
+                                    $imageUrl = 'https://images.unsplash.com/photo-1518834107818-ae3d91a17a95?w=200&h=200&fit=crop';
+                                }
+                            @endphp
                             <div class="flex items-center space-x-3 mb-4 pb-4 border-b border-gray-100">
                                 <div class="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                                    @php
-                                        $productImages = $item->product->images ?? [];
-                                    @endphp
-                                    @if(is_array($productImages) && count($productImages) > 0)
-                                        <img src="{{ asset('storage/' . $productImages[0]) }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
-                                    @else
-                                        <div class="w-full h-full flex items-center justify-center">
-                                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                            </svg>
-                                        </div>
-                                    @endif
+                                    <img src="{{ $imageUrl }}" 
+                                         alt="{{ $item->product->name }}" 
+                                         class="w-full h-full object-cover">
                                 </div>
                                 <div class="flex-1">
                                     <h4 class="font-medium text-gray-900 text-sm">{{ Str::limit($item->product->name, 40) }}</h4>
