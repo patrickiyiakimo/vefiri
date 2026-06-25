@@ -101,20 +101,70 @@
                         <div class="p-6 flex items-center space-x-4">
                             <div class="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                                 @php
-                                    $productImages = $item->product->images ?? [];
+                                    // Handle images properly - Same logic as cart page
+                                    $product = $item->product;
+                                    $images = $product->images ?? [];
+                                    
+                                    // If images is a JSON string, decode it
+                                    if (is_string($images)) {
+                                        $images = json_decode($images, true) ?? [];
+                                    }
+                                    
+                                    // If images is a collection or array, convert to array
+                                    if ($images instanceof \Illuminate\Support\Collection) {
+                                        $images = $images->toArray();
+                                    }
+                                    
+                                    // Get the first image
+                                    $firstImage = null;
+                                    if (is_array($images) && count($images) > 0 && !empty($images[0])) {
+                                        $firstImage = $images[0];
+                                    }
+                                    
+                                    // Fallback images based on product ID (same as cart page)
+                                    $fallbackImages = [
+                                        1 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop',
+                                        2 => 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=200&h=200&fit=crop',
+                                        3 => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=200&h=200&fit=crop',
+                                        4 => 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop',
+                                        5 => 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=200&h=200&fit=crop',
+                                        6 => 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=200&h=200&fit=crop',
+                                        7 => 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
+                                        8 => 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=200&h=200&fit=crop',
+                                        9 => 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200&h=200&fit=crop',
+                                        10 => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200&h=200&fit=crop',
+                                        11 => 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=200&h=200&fit=crop',
+                                        12 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop',
+                                    ];
+                                    
+                                    $imageUrl = null;
+                                    if ($firstImage) {
+                                        // Check if it's a full URL (starts with http)
+                                        if (filter_var($firstImage, FILTER_VALIDATE_URL)) {
+                                            $imageUrl = $firstImage;
+                                        } else {
+                                            // Try storage path
+                                            $storagePath = asset('storage/' . $firstImage);
+                                            // Try public path as fallback
+                                            $publicPath = asset($firstImage);
+                                            
+                                            // Use storage path by default
+                                            $imageUrl = $storagePath;
+                                        }
+                                    } elseif (isset($fallbackImages[$product->id])) {
+                                        $imageUrl = $fallbackImages[$product->id];
+                                    } else {
+                                        // Generic fallback image
+                                        $imageUrl = 'https://images.unsplash.com/photo-1518834107818-ae3d91a17a95?w=200&h=200&fit=crop';
+                                    }
                                 @endphp
-                                @if(is_array($productImages) && count($productImages) > 0)
-                                    <img src="{{ asset('storage/' . $productImages[0]) }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
-                                @else
-                                    <div class="w-full h-full flex items-center justify-center text-gray-400">
-                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </div>
-                                @endif
+                                <img src="{{ $imageUrl }}" 
+                                     alt="{{ $product->name ?? 'Product' }}" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518834107818-ae3d91a17a95?w=200&h=200&fit=crop';">
                             </div>
                             <div class="flex-1">
-                                <h3 class="font-semibold text-gray-900">{{ $item->product->name }}</h3>
+                                <h3 class="font-semibold text-gray-900">{{ $product->name ?? 'Product' }}</h3>
                                 <p class="text-sm text-gray-500">Vendor: {{ $item->vendor->store_name ?? $item->vendor->name ?? 'Vefiri' }}</p>
                                 <p class="text-sm text-gray-500">Qty: {{ $item->quantity }}</p>
                             </div>
@@ -138,16 +188,18 @@
                     <div class="p-6 space-y-3">
                         <div>
                             <p class="text-sm text-gray-500">Name</p>
-                            <p class="font-medium text-gray-900">  {{  $order->user->name  }} 
-                                    {{ $order->user->last_name }}</p>
+                            <p class="font-medium text-gray-900">
+                                {{ $order->user->name ?? '' }} 
+                                {{ $order->user->last_name ?? '' }}
+                            </p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-500">Email</p>
-                            <p class="font-medium text-gray-900">{{ $order->user->email }}</p>
+                            <p class="font-medium text-gray-900">{{ $order->user->email ?? 'N/A' }}</p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-500">Phone</p>
-                            <p class="font-medium text-gray-900">{{ $order->user->phone }}</p>
+                            <p class="font-medium text-gray-900">{{ $order->user->phone ?? 'N/A' }}</p>
                         </div>
                     </div>
                 </div>
@@ -160,11 +212,13 @@
                     <div class="p-6 space-y-3">
                         <div>
                             <p class="text-sm text-gray-500">Address</p>
-                            <p class="font-medium text-gray-900">{{ $order->address }}, {{ $order->city }}, {{ $order->state }} {{ $order->zip_code }}</p>
+                            <p class="font-medium text-gray-900">
+                                {{ $order->address ?? 'N/A' }}{{ $order->city ? ', ' . $order->city : '' }}{{ $order->state ? ', ' . $order->state : '' }}{{ $order->zip_code ? ' ' . $order->zip_code : '' }}
+                            </p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-500">Shipping Address</p>
-                            <p class="font-medium text-gray-900">{{ $order->shipping_address }}</p>
+                            <p class="font-medium text-gray-900">{{ $order->shipping_address ?? 'N/A' }}</p>
                         </div>
                     </div>
                 </div>
@@ -177,20 +231,20 @@
                     <div class="p-6 space-y-3">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Subtotal</span>
-                            <span class="font-medium">₦{{ number_format($order->subtotal, 2) }}</span>
+                            <span class="font-medium">₦{{ number_format($order->subtotal ?? 0, 2) }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Shipping</span>
-                            <span class="font-medium">₦{{ number_format($order->shipping_cost, 2) }}</span>
+                            <span class="font-medium">₦{{ number_format($order->shipping_cost ?? 0, 2) }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Tax</span>
-                            <span class="font-medium">₦{{ number_format($order->tax, 2) }}</span>
+                            <span class="font-medium">₦{{ number_format($order->tax ?? 0, 2) }}</span>
                         </div>
                         <div class="border-t pt-3 mt-3">
                             <div class="flex justify-between font-bold text-lg">
                                 <span>Total</span>
-                                <span class="text-orange-600">₦{{ number_format($order->total, 2) }}</span>
+                                <span class="text-orange-600">₦{{ number_format($order->total ?? 0, 2) }}</span>
                             </div>
                         </div>
                     </div>
@@ -215,4 +269,18 @@
         </div>
     </div>
 </div>
+
+<!-- JavaScript for handling images -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle any broken images
+    document.querySelectorAll('img').forEach(function(img) {
+        img.addEventListener('error', function() {
+            console.warn('Image failed to load:', this.src);
+            this.onerror = null;
+            this.src = 'https://images.unsplash.com/photo-1518834107818-ae3d91a17a95?w=200&h=200&fit=crop';
+        });
+    });
+});
+</script>
 @endsection
