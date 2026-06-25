@@ -338,10 +338,16 @@
                                 </div>
                             ` : ''}
                         </div>
+                        
                         <div class="p-4">
+                        
                             <h3 class="font-semibold text-lg text-gray-900 mb-1 line-clamp-1">${escapeHtml(product.name)}</h3>
+                             <div class="text-sm py-3 ${product.stock_quantity > 0 ? 'text-green-600' : 'text-red-600'}">
+                                        ${product.stock_quantity > 0 ? `In Stock (${product.stock_quantity})` : 'Out of Stock'}
+                                    </div>
                             <p class="text-gray-600 text-sm mb-2 line-clamp-2">${escapeHtml(product.description ? product.description.substring(0, 100) : '')}</p>
                             <div class="flex items-center justify-between mb-3">
+                           
                                 <div>
                                     <span class="text-2xl font-bold text-orange-600">₦${parseFloat(product.price).toFixed(2)}</span>
                                     ${product.compare_price ? `
@@ -349,6 +355,7 @@
                                     ` : ''}
                                 </div>
                             </div>
+                             
                             <button onclick="addToCart(${product.id})" 
                                 class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-2  hover:shadow-lg transition ${isOutOfStock ? 'opacity-50 cursor-not-allowed' : ''}"
                                 ${isOutOfStock ? 'disabled' : ''}>
@@ -368,6 +375,7 @@
                 return `
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all">
                         <div class="flex flex-col md:flex-row">
+                        
                             <div class="md:w-48 h-48 bg-gray-200 flex items-center justify-center">
                                 ${hasImage ? 
                                     `<img src="${imageUrl}" alt="${escapeHtml(product.name)}" class="w-full h-full object-cover">` :
