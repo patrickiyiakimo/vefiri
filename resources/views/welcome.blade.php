@@ -6,5 +6,4 @@
     @include('partials.testimonials')
     @include('partials.cta-section')
     @include('promotion-banner')
-    @include('components.live-notifications')
 @endsection

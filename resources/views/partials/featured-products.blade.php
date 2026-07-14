@@ -44,21 +44,20 @@
                                  alt="{{ $product->name }}" 
                                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         @else
-                            <!-- Fallback images based on product ID -->
                             @php
                                 $fallbackImages = [
-                                    1 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop', // Classic White T-Shirt
-                                    2 => 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop', // Slim Fit Jeans
-                                    3 => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop', // Leather Jacket
-                                    4 => 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop', // Running Shoes
-                                    5 => 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=400&fit=crop', // Wool Scarf
-                                    6 => 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&h=400&fit=crop', // Smart Watch
-                                    7 => 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop', // Wireless Headphones
-                                    8 => 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop', // Coffee Mug Set
-                                    9 => 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400&h=400&fit=crop', // Yoga Mat
-                                    10 => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop', // Backpack
-                                    11 => 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop', // Cutton Wigs
-                                    12 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop', // T-Shirts
+                                    1 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+                                    2 => 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop',
+                                    3 => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+                                    4 => 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+                                    5 => 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=400&fit=crop',
+                                    6 => 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&h=400&fit=crop',
+                                    7 => 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
+                                    8 => 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop',
+                                    9 => 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400&h=400&fit=crop',
+                                    10 => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
+                                    11 => 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop',
+                                    12 => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
                                 ];
                             @endphp
                             <img src="{{ $fallbackImages[$product->id] ?? 'https://images.unsplash.com/photo-1518834107818-ae3d91a17a95?w=400&h=400&fit=crop' }}" 
@@ -116,8 +115,62 @@
     </div>
 </section>
 
+<!-- Login Required Notification Banner - Responsive -->
+<div id="loginRequiredBanner" class="fixed bottom-0 left-0 right-0 z-[10000] hidden">
+    <div class="bg-white shadow-2xl border-t border-gray-200 p-4 md:p-5 animate-slide-up">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+                <!-- Icon -->
+                <div class="flex-shrink-0 flex items-center gap-3 w-full sm:w-auto">
+                    <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <div class="sm:hidden">
+                        <h4 class="font-bold text-gray-900 text-sm">Login Required</h4>
+                        <p class="text-gray-500 text-xs">Please login to add items to cart</p>
+                    </div>
+                </div>
+                
+                <!-- Text - Hidden on mobile (shown in icon area) -->
+                <div class="hidden sm:block flex-1">
+                    <h4 class="font-bold text-gray-900 text-sm">Login Required</h4>
+                    <p class="text-gray-500 text-sm">Please login to add items to your cart.</p>
+                </div>
+                
+                <!-- Buttons -->
+                <div class="flex items-center gap-2 w-full sm:w-auto mt-2 sm:mt-0">
+                    <a href="{{ route('login') }}" class="flex-1 sm:flex-none text-center px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold hover:shadow-lg transition">
+                        Login
+                    </a>
+                    <a href="{{ route('signup') }}" class="flex-1 sm:flex-none text-center px-4 py-2 border border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">
+                        Sign Up
+                    </a>
+                    <button onclick="closeLoginBanner()" class="flex-shrink-0 text-gray-400 hover:text-gray-600 p-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function addToCart(productId) {
+        // Check if user is logged in
+        const isLoggedIn = document.querySelector('nav .user-menu') !== null || 
+                          document.querySelector('nav [x-data]') !== null ||
+                          document.querySelector('nav .relative.group') !== null;
+        
+        // If not logged in, show login banner
+        if (!isLoggedIn) {
+            showLoginBanner();
+            return;
+        }
+        
         // Get CSRF token from meta tag
         const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         
@@ -182,7 +235,11 @@
         })
         .catch(error => {
             console.error('Error:', error);
-            showNotification(error.message || 'Please login to add items to cart', 'error');
+            if (error.message.includes('login')) {
+                showLoginBanner();
+            } else {
+                showNotification(error.message || 'Please login to add items to cart', 'error');
+            }
         })
         .finally(() => {
             // Re-enable the button
@@ -196,6 +253,40 @@
                 `;
             });
         });
+    }
+
+    let loginBannerTimeout = null;
+    let loginBannerAutoHide = null;
+
+    function showLoginBanner() {
+        const banner = document.getElementById('loginRequiredBanner');
+        
+        // Clear any existing timeouts
+        if (loginBannerTimeout) {
+            clearTimeout(loginBannerTimeout);
+        }
+        if (loginBannerAutoHide) {
+            clearTimeout(loginBannerAutoHide);
+        }
+        
+        banner.classList.remove('hidden');
+        banner.style.display = 'block';
+        
+        // Auto-hide after 8 seconds
+        loginBannerAutoHide = setTimeout(() => {
+            closeLoginBanner();
+        }, 8000);
+    }
+
+    function closeLoginBanner() {
+        const banner = document.getElementById('loginRequiredBanner');
+        banner.style.display = 'none';
+        banner.classList.add('hidden');
+        
+        if (loginBannerAutoHide) {
+            clearTimeout(loginBannerAutoHide);
+            loginBannerAutoHide = null;
+        }
     }
 
     function showNotification(message, type) {
@@ -259,5 +350,55 @@
     @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-slide-up {
+        animation: slide-up 0.3s ease-out forwards;
+    }
+    
+    /* Mobile-specific adjustments */
+    @media (max-width: 640px) {
+        #loginRequiredBanner .bg-white {
+            padding: 12px 16px;
+        }
+        
+        #loginRequiredBanner .max-w-4xl {
+            padding: 0;
+        }
+        
+        #loginRequiredBanner .flex {
+            gap: 8px;
+        }
+        
+        #loginRequiredBanner .w-10.h-10 {
+            width: 36px;
+            height: 36px;
+        }
+        
+        #loginRequiredBanner .w-5.h-5 {
+            width: 18px;
+            height: 18px;
+        }
+        
+        #loginRequiredBanner .px-4 {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        
+        #loginRequiredBanner .py-2 {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
     }
 </style>
