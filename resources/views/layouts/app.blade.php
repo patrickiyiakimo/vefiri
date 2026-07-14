@@ -71,6 +71,6 @@
     
    
     @include('layouts.footer')
-
+    @include('internet')
 </body>
 </html>
