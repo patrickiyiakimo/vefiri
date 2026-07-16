@@ -217,7 +217,7 @@
             </a>
         @elseif(auth()->user()->hasLogisticsApplication())
             <a href="{{ route('logistics.status') }}" 
-               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                 Check Application Status
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -225,7 +225,7 @@
             </a>
         @else
             <a href="{{ route('logistics.apply') }}" 
-               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                 Apply Now
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -234,7 +234,7 @@
         @endif
     @else
         <a href="{{ route('login') }}" 
-           class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+           class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
             Login to Apply
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>

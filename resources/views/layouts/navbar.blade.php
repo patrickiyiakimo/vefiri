@@ -245,7 +245,7 @@
                                 <a href="{{ route('signup') }}" class="px-4 py-2 text-gray-700 font-medium hover:text-orange-500 transition">
                                     Sign Up
                                 </a>
-                                <a href="{{ route('login') }}" class="px-5 py-2 bg-orange-600 text-white font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+                                <a href="{{ route('login') }}" class="px-5 py-2 bg-orange-500 text-white font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
                                     Login
                                 </a>
                             </div>
