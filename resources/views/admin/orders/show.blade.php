@@ -213,7 +213,7 @@
                         <div>
                             <p class="text-sm text-gray-500">Address</p>
                             <p class="font-medium text-gray-900">
-                                {{ $order->address ?? 'N/A' }}{{ $order->city ? ', ' . $order->city : '' }}{{ $order->state ? ', ' . $order->state : '' }}{{ $order->zip_code ? ' ' . $order->zip_code : '' }}
+                                {{ $order->user->address ?? 'N/A' }}{{ $order->city ? ', ' . $order->city : '' }}{{ $order->state ? ', ' . $order->state : '' }}{{ $order->zip_code ? ' ' . $order->zip_code : '' }}
                             </p>
                         </div>
                         <div>
