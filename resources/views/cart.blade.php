@@ -151,7 +151,9 @@
                             </div>
                             <div class="flex justify-between text-gray-600">
                                 <span>Tax</span>
-                                <span id="cart-tax">₦0.00</span>
+                                <span id="cart-tax">
+                                    Calculated at checkout
+                                </span>
                             </div>
                         </div>
                         
