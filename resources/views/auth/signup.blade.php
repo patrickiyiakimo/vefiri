@@ -4,14 +4,7 @@
 <div class="bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
         <!-- Logo/Branding -->
-        <div class="text-center">
-            <div class="flex justify-center">
-                <div class="w-10 h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded-md flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-                     <span class="text-white font-bold text-xl">
-                                <img src="{{ asset('/images/PHOTO-2026-03-18-03-30-30.jpg') }}" alt="Vefiri Logo" class="w-6 h-6">
-                            </span>
-                </div>
-            </div>
+        <div class="text-center">           
             <h2 class="mt-6 text-4xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                 Create Account
             </h2>
