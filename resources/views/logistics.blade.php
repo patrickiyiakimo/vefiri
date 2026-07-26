@@ -8,12 +8,7 @@
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <div class="text-center max-w-4xl mx-auto">
-            <div class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-md rounded-full mb-6">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"></path>
-                </svg>
-                <span class="text-sm font-medium">We're Hiring</span>
-            </div>
+            
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
                 Become a Vefiri <span class="text-orange-200">Logistics Partner</span>
             </h1>
@@ -151,9 +146,6 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-                <div class="inline-flex items-center px-3 py-1 bg-orange-100 rounded-full mb-4">
-                    <span class="text-orange-600 text-sm font-semibold">Requirements</span>
-                </div>
                 <h2 class="text-3xl font-bold text-gray-900 mb-6">What You Need to Get Started</h2>
                 <div class="space-y-4">
                     <div class="flex items-start space-x-3">
@@ -209,7 +201,7 @@
     @auth
         @if(auth()->user()->isLogisticsPartner())
             <a href="{{ route('logistics.dashboard') }}" 
-               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300">
                 Go to Dashboard
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -217,7 +209,7 @@
             </a>
         @elseif(auth()->user()->hasLogisticsApplication())
             <a href="{{ route('logistics.status') }}" 
-               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold hover:shadow-lg duration-300">
                 Check Application Status
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -225,7 +217,7 @@
             </a>
         @else
             <a href="{{ route('logistics.apply') }}" 
-               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+               class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300">
                 Apply Now
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -234,7 +226,7 @@
         @endif
     @else
         <a href="{{ route('login') }}" 
-           class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+           class="inline-flex items-center justify-center w-full px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg transition-all duration-300">
             Login to Apply
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
