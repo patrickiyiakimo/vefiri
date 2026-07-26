@@ -163,11 +163,11 @@
                         </div>
                         
                         <div class="mt-6 space-y-3">
-                            <button onclick="proceedToCheckout()" class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg hover:shadow-lg transition font-semibold">
+                            <button onclick="proceedToCheckout()" class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 hover:shadow-lg transition font-semibold">
                                 Proceed to Checkout
                             </button>
                             
-                            <button onclick="clearCart()" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition font-medium">
+                            <button onclick="clearCart()" class="w-full bg-gray-100 text-gray-700 py-3  hover:bg-gray-200 transition font-medium">
                                 Clear Cart
                             </button>
                         </div>
