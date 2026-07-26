@@ -577,7 +577,7 @@
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                showNotification('Product added to cart! 🛒', 'success');
+                showNotification('Product added to cart!', 'success');
                 if (window.updateCartCount) {
                     window.updateCartCount(data.cart_count);
                 }
