@@ -51,16 +51,7 @@
                                 My Orders
                             </div>
                         </button>
-                        
-                        <button class="profile-tab-btn w-full text-left px-4 py-2 rounded-lg transition mb-2" data-tab="wishlist">
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                </svg>
-                                Wishlist
-                            </div>
-                        </button>
-                        
+                       
                         @if(Auth::user()->isVendor())
                         <button class="profile-tab-btn w-full text-left px-4 py-2 rounded-lg transition mb-2" data-tab="vendor">
                             <div class="flex items-center">
@@ -129,7 +120,7 @@
                             </div>
                             
                             <div class="mt-6 flex justify-end">
-                                <button type="submit" class="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:shadow-lg transition">
+                                <button type="submit" class="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:shadow-lg transition">
                                     Update Profile
                                 </button>
                             </div>
@@ -194,7 +185,7 @@
                             </div>
                             
                             <div class="mt-6 flex justify-end">
-                                <button type="submit" class="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:shadow-lg transition">
+                                <button type="submit" class="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:shadow-lg transition">
                                     Update Password
                                 </button>
                             </div>
@@ -271,65 +262,6 @@
     </div>
 </div>
 
-                <!-- Wishlist Tab -->
-                <div id="tab-wishlist" class="profile-tab-content hidden">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <div class="p-6 border-b border-gray-200">
-                            <h2 class="text-xl font-bold text-gray-900">My Wishlist</h2>
-                        </div>
-                        
-                        @php
-                            $wishlist = \App\Models\Wishlist::where('user_id', Auth::id())->with('product')->get();
-                        @endphp
-                        
-                        @if($wishlist->count() > 0)
-                            <div class="divide-y divide-gray-200">
-                                @foreach($wishlist as $item)
-                                <div class="p-6 hover:bg-gray-50 transition">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center space-x-4 flex-1">
-                                            <div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                                                @if($item->product->images && is_array($item->product->images) && count($item->product->images) > 0)
-                                                    <img src="{{ asset('storage/' . $item->product->images[0]) }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
-                                                @else
-                                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                                    </svg>
-                                                @endif
-                                            </div>
-                                            <div>
-                                                <h3 class="font-semibold text-gray-900">{{ $item->product->name }}</h3>
-                                                <p class="text-sm text-gray-500">{{ $item->product->sku }}</p>
-                                                <p class="text-lg font-bold text-orange-600 mt-1">₦{{ number_format($item->product->price, 2) }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex space-x-2">
-                                            <button onclick="addToCart({{ $item->product->id }})" class="px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:shadow-lg transition text-sm">
-                                                Add to Cart
-                                            </button>
-                                            <button onclick="removeFromWishlist({{ $item->id }})" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        @else
-                            <div class="p-12 text-center">
-                                <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                </svg>
-                                <p class="text-gray-500">Your wishlist is empty.</p>
-                                <a href="{{ route('shop') }}" class="inline-block mt-4 text-orange-600 hover:text-orange-700 transition">
-                                    Browse Products →
-                                </a>
-                            </div>
-                        @endif
-                    </div>
-                </div>
 
                 <!-- Vendor Store Settings Tab -->
                 @if(Auth::user()->isVendor())
@@ -381,7 +313,7 @@
                             </div>
                             
                             <div class="mt-6 flex justify-end">
-                                <button type="submit" class="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:shadow-lg transition">
+                                <button type="submit" class="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:shadow-lg transition">
                                     Update Store Settings
                                 </button>
                             </div>

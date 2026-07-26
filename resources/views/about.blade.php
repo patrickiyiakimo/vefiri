@@ -151,9 +151,6 @@
             <!-- Right Side: Benefits List -->
             <div class="space-y-6 order-2 lg:order-2">
                 <div>
-                    <div class="inline-flex items-center px-3 py-1 bg-orange-100 rounded-full mb-4">
-                        <span class="text-orange-600 text-sm font-semibold">Why Shop With Us</span>
-                    </div>
                     <h3 class="text-3xl font-bold text-gray-900 mb-4">Shopping Benefits</h3>
                     <p class="text-gray-500">Experience seamless shopping with premium benefits designed for you.</p>
                 </div>
