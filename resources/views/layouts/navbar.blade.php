@@ -326,7 +326,7 @@
                 <!-- Mobile Authentication -->
                 @auth
                     <div class="px-3 py-2">
-                        <div class="flex items-center space-x-3 mb-3 p-3 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg">
+                        <div class="flex items-center space-x-3 mb-3 p-3 bg-orange-100 to-orange-100 rounded-lg">
                             <div class="w-10 h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-semibold">
                                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                             </div>
