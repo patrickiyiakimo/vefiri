@@ -84,10 +84,7 @@
         <!-- Stats Bar -->
         <div id="stats-bar" class="hidden mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex justify-between items-center">
             <span id="results-count" class="text-gray-600"></span>
-            <span id="view-options" class="text-gray-500 text-sm">
-                <button class="px-3 py-1 bg-orange-100 text-orange-600 rounded-lg">Grid</button>
-                <button class="px-3 py-1 hover:bg-gray-100 rounded-lg transition">List</button>
-            </span>
+           
         </div>
 
         <!-- Vendors Grid - Enhanced -->
