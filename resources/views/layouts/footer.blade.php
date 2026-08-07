@@ -6,19 +6,17 @@
             
             <!-- Company Info -->
             <div>
-                 <div class="flex-shrink-0">
+                <div class="flex-shrink-0">
                     <a href="{{ url('/') }}" class="flex items-center space-x-1 group">
                         <div>
-                            <span class="text-white font-bold text-xl">
-                                <img src="{{ asset('/images/PHOTO-2026-03-18-03-30-30.jpg') }}" alt="Vefiri Logo" class="w-10 h-10">
-                            </span>
+                            <img src="{{ asset('images/PHOTO-2026-03-18-03-30-30.jpg') }}" alt="Vefiri Logo" class="w-10 h-10">
                         </div>
                         <span class="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                             Vefiri
                         </span>
                     </a>
                 </div>
-                <p class="text-gray-400 mb-4 leading-relaxed">
+                <p class="text-gray-400 mb-4 leading-relaxed mt-3">
                     Nigeria's trusted marketplace connecting verified vendors with savvy shoppers for authentic products and seamless shopping experience.
                 </p>
                 <div class="flex space-x-4">
@@ -145,14 +143,31 @@
                 <p class="text-gray-400 mb-4 text-sm">
                     Subscribe to get special offers, free giveaways, and exclusive deals.
                 </p>
-                <form class="mb-6">
+                
+                <!-- Newsletter Form - FIXED: Using newsletter_email as id to avoid conflicts -->
+                <form method="POST" action="{{ route('signup') }}" class="mb-6">
+                    @csrf
+                    
                     <div class="flex">
-                        <input type="email" placeholder="Your email address" 
-                               class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700  focus:outline-none focus:border-orange-500 text-white text-sm">
-                        <button type="submit" class="px-4 py-2 bg-orange-500 text-white  hover:bg-orange-600 transition">
+                        <input type="email" 
+                               name="email" 
+                               id="newsletter_email"
+                               value="{{ old('email') }}" 
+                               placeholder="Your email address"
+                               class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 focus:outline-none focus:border-orange-500 text-white text-sm"
+                               required>
+                        <button type="submit" class="px-4 py-2 bg-orange-500 text-white hover:bg-orange-600 transition whitespace-nowrap">
                             Subscribe
                         </button>
                     </div>
+                    
+                    @error('email')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                    
+                    @if(session('newsletter_success'))
+                        <p class="text-green-500 text-xs mt-1">{{ session('newsletter_success') }}</p>
+                    @endif
                 </form>
                 
                 <div class="space-y-3">
@@ -180,18 +195,15 @@
             </div>
         </div>
         
-       
-        
         <!-- Copyright -->
         <div class="border-t border-gray-800 mt-8 pt-8 text-center">
             <p class="text-gray-400 text-sm">
                 &copy; {{ date('Y') }} Vefiri. All rights reserved.
             </p>
-            <!-- In your footer section -->
-<div class="flex flex-wrap justify-center gap-6 text-sm">
-    <a href="{{ route('privacy-policy') }}" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
-    <a href="{{ route('terms-of-service') }}" class="text-gray-400 hover:text-white transition">Terms of Service</a>
-</div>
+            <div class="flex flex-wrap justify-center gap-6 text-sm mt-3">
+                <a href="{{ route('privacy-policy') }}" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                <a href="{{ route('terms-of-service') }}" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+            </div>
         </div>
     </div>
 </footer>
