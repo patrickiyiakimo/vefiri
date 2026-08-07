@@ -145,30 +145,32 @@
                 </p>
                 
                 <!-- Newsletter Form - FIXED: Using newsletter_email as id to avoid conflicts -->
-                <form method="POST" action="{{ route('signup') }}" class="mb-6">
-                    @csrf
-                    
-                    <div class="flex">
-                        <input type="email" 
-                               name="email" 
-                               id="newsletter_email"
-                               value="{{ old('email') }}" 
-                               placeholder="Your email address"
-                               class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 focus:outline-none focus:border-orange-500 text-white text-sm"
-                               required>
-                        <button type="submit" class="px-4 py-2 bg-orange-500 text-white hover:bg-orange-600 transition whitespace-nowrap">
-                            Subscribe
-                        </button>
-                    </div>
-                    
-                    @error('email')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                    
-                    @if(session('newsletter_success'))
-                        <p class="text-green-500 text-xs mt-1">{{ session('newsletter_success') }}</p>
-                    @endif
-                </form>
+               <!-- Newsletter Form -->
+<form method="POST" action="{{ route('signup') }}" class="mb-6">
+    @csrf
+    
+    <div class="flex">
+        <input type="email" 
+               name="email" 
+               id="newsletter_email"
+               value="{{ old('email', auth()->user()->email ?? '') }}" 
+               placeholder="Your email address"
+               class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 focus:outline-none focus:border-orange-500 text-white text-sm"
+               @if(auth()->check()) readonly @endif
+               required>
+        <button type="submit" class="px-4 py-2 bg-orange-500 text-white hover:bg-orange-600 transition whitespace-nowrap">
+            Subscribe
+        </button>
+    </div>
+    
+    @error('email')
+        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+    @enderror
+    
+    @if(session('newsletter_success'))
+        <p class="text-green-500 text-xs mt-1">{{ session('newsletter_success') }}</p>
+    @endif
+</form>
                 
                 <div class="space-y-3">
                     <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
